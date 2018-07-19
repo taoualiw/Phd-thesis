@@ -1,0 +1,23 @@
+\subsection{Discussion and conclusion}
+
+This work aimed at addressing the following key-points: 
+%%
+\begin{itemize}
+%%
+\item Making the difference between the discretized model {\em sampling} time and the implementation {\em simulation} time (several implementation steps may be use to iteratively estimate one sample of time, whereas a closed-form expression may provide the result after several sampling times in one simulation time).
+%%
+\item Calculating the bias between a continuous stable trajectory and its discretized approximation, all along the trajectory and given a sampling time (not only be sure that either the asymptotic targets are the same or that everything is perfect if the sampling is infinitesimally small).
+%%
+\item Making explicit the goals of using synchronous/asynchronous mechanisms at both the modeling level (asynchronous evaluation mechanisms avoid generating spurious synchronizations not present at the modeling level) and the implementation level (simulation on coarse or fine grain parallel processing clusters to multiply the calculation capability). 
+%%
+\item Specifying whether not only the calculation but also the time is distributed (global time versus local time), i.e. whether a discrete clock dynamic system versus a discrete event dynamic system is considered.
+%%
+\item Deriving, in the case of the general family of dynamic neural field distributed and interconnected units, quantitative bounds that guaranty the convergence of the implementation calculations towards the modeling expected solution.
+%%
+\end{itemize}
+%%
+Addressing all these issues in such a short review would have been unrealistic, whereas a major but rather unnoticed work \cite{Mitra:1987} on asynchronous computing, addresses these issues at a very general and deep level. The goal of this paper was thus to apply these results to the case of DNF computations and provide the complements in order to make these results directly usable.\\
+
+Making the explicit distinction between sampling times and simulation times allowed us to review how well-established asynchronous evaluation methods can be efficiently used for dynamic neural fields simulation; as soon as reasonable assumptions are verified, fast convergence and unbiasedness are guaranteed. In return, as we explained in the previous section, dynamic neural field theory provides a fruitful playground for the study of asynchronous evaluation schemes. For example, in \cite{Rougier:2006}, it has been shown (numerically) that such an asynchronous evaluation method leads to new stable solutions that are functionally different from the continuous case. When presented with two identical stimuli at different locations, the field is able to stabilize itself on either one of the two stimuli because of the perturbation that lead the system away from a very unstable equilibrium state (like would also do any kind of noise). However, this new state, that has been shown to be very stable, can be also easily proved not to be a solution of the continuous equation of the field. What is thus the relevancy of such a continuous description if we are to evaluate it using numerical asynchronous equations ? Ideally, we wish we could have an equivalent continuous asynchronous description but unfortunately, this is not yet the case in the field of mathematics. We should then take extra precaution when describing a system using continuous equations and wonder if we are really simulating what we advertised in the definition of the system. Particularly, at the mesoscopic modeling level, it may be worthwhile to use an event-based paradigm instead of a clock-based one, as it is a well-defined paradigm which takes into consideration that not only the processing but also the timing are fully distributed.\\
+
+From a more cognitive point of view, this study reveals the implicit presence of a central clock in a number of models and thus the implicit presence of a grand supervisor (a.k.a. central executive, homunculus, etc.) orchestrating the overall activity of the model. While this may be acceptable in most models that do not care about this parasitic presence, it is hardly acceptable if a model pretends to vanquish the curse of the homunculus.

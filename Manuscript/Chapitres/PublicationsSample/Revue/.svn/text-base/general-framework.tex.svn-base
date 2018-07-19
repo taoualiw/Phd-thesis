@@ -1,0 +1,71 @@
+\subsection{General framework}
+
+\subsubsection{Dynamic Neural Fields}
+Let us target generalized neural fields with delayed connection strength that are {\em tissue level models that describe the spatio-temporal evolution of coarse grained variables such as temporal synchronization or firing rate activity in populations of neurons} as explained by \cite{Coombes:2006}. Such neural fields were primarily introduced by \cite{Wilson:1973} and \cite{Amari:1977} and are generic enough to give account on a great number of models from the computational neuroscience community. We will consider a single {\em network} made of several {\em units} with {\em spatial connections} between them. The evolution of the activity $V$ of such a network is described by the following differential equation, which may write:
+%%
+\begin{align}
+  \label{eq:DNF-continuous}
+  & \frac{\partial V(\mathbf{x},t)}{\partial t} =
+  -\frac{1}{\tau(\mathbf{x})} \, V(\mathbf{x},t) + h(\mathbf{x}, t) + s(\mathbf{x}, t)  \notag \\ 
+  &+ \int_{\cal M} d \mathbf{y} \, \int_0^{+\infty} \, \hspace{-1em} d \eta \; W(\mathbf{x}, \mathbf{y}, \eta) \, \sigma_{\mathbf{y}}\left(V(\mathbf{y}, t - \eta)\right) 
+\end{align}
+%%
+where $\mathbf{x}$ denotes a location onto the manifold $M$, $t$ is time, $V(\mathbf{x}, t)$ denotes the membrane potential of a neural population at point $\mathbf{x}$ and time $t$, ${\tau}$ is the temporal decay of synapses, i.e., represents a {\em leak}, $\eta$ is the transmission delay, $W$ is the (spatio-temporal) synaptic function, $s(\mathbf{x},t)$ is the input received at position $\mathbf{x}$ and $h$ is the mean neuron threshold.
+
+In this framework, $\sigma_{\mathbf{y}}()$ is a smooth sigmoid function that relates the unit state to the mean firing rate. As an extension of this {\em analog} input/output non-linearity, steep sigmoid profiles can also be introduced in order to encounter for mesoscopic events triggered by some unit state. Furthermore, one mesoscopic unit is not necessarily represented by a scalar value $V(\mathbf{x}, t)$, whereas a vectorial state vector could be taken into account. Providing that the leak, now a matrix, is diagonalizable, this representation trivially decomposes in a vector of equation of the form of~(\ref{eq:DNF-continuous}), so that we can keep considering~(\ref{eq:DNF-continuous}), in our context, without loss of generality.
+
+Some dynamic neural field (DNF) models assume that the information velocity is unbounded, thus neglect transmission delays (i.e., $W({\bf x}, {\bf y}, \eta) = w({\bf x}, {\bf y}) \, \delta(\eta - 0)$, with only an "instantaneous" connection). Some consider an unchanged transmission, with delay \\ (e.g., $W({\bf x}, {\bf y}, \eta) = W({\bf x}, {\bf y}) \, \delta(\eta - \frac{|{\bf x} - {\bf y}|}{v})$ for a propagation at a velocity $v$). The present formulation subsumes these various cases, taking into account the spatio-temporal nature of the connection. 
+
+\subsubsection{Discrete Neural Fields}
+
+At this point, it is important to note that such a model possesses three distinct levels of continuity, namely: {\em space}, {\em time} and {\em value} and since such a system cannot be solved analytically in the general case, we have to use numerical methods to solve the corresponding discretized differential equations system. 
+Here we consider the  spatial discretization level as an {\em a priori} and neglect the value discretization (except in subsection~\ref{dds}, where it is discussed).
+This allows us to concentrate on the temporal level. We can now rewrite the equation as the following discrete set of units evolution, indexed by a finite set $M$:
+
+\begin{align}
+\label{eq:DNF-discrete}
+  \frac{\Delta V_i(t) }{\Delta t}  = &- L_i \, V_i(t)  + I_i(t) \notag \\
+  &+ \hspace{-1em} \sum_{\substack{j \in M\\k \in \{k_{\min}, k_{\max}\}}} \hspace{-1em} W_{ijk} \, \sigma_j\left(V_j(t - k\, \Delta T)\right)
+\end{align}
+
+Here $V_i(t) \equiv V(\mathbf{x}_i, t)$ denotes the related mesoscopic state at the sampled location $\mathbf{x}_i$ (namely the spatial average of the membrane potential, for the neural population at that point and time).  Furthermore, $L_i \equiv \frac{1}{\tau(\mathbf{x}_i)}$ is the ``leak'' related to the unit time-constant (namely the average membrane temporal decay of synapses in a mean-field approach), while $\sigma_j()$ is the same function defined as in~(\ref{eq:DNF-continuous}), and $W$ is the connection strength function.  Weights are indexed by the spatial indexes and by the delay index $k$, i.e. each possible delay between $k_{\min}$ and $k_{\max}$ is taken into account, sampled at $\Delta T$.  Finally $I_i(t) \equiv h(\mathbf{x}_i, t) + s(\mathbf{x}_i, t)$ encounters for both the received input $s(\mathbf{x}_i, t)$ and activity threshold $h(\mathbf{x}_i, t)$.
+
+The former equation~(\ref{eq:DNF-continuous}) corresponds to the {\em original} dynamic neural field (see, e.g. \cite{Grimbert:2008} for a recent review) and the latter equation~(\ref{eq:DNF-discrete}) corresponds to a discrete neural assemblies of neurons and we are only going to consider this latter system in the following.\\
+
+A key point here is the distinction between the {\em simulation} sampling time $\Delta t$ (i.e., the time at which the continuous system is discretized) and the {\em modeling} sampling time $\Delta T$ (i.e., the discrete time chosen to model the dynamical system). Choosing to sample $\int_0^{+\infty} \, \hspace{-1em} d \eta$ by a sum $\sum_{k = k_{\min}}^{k_{\max}}$ at $t = k\,. \Delta T$ is a modeling choice, whereas calculating the $\frac{\partial V(\mathbf{x},t)}{\partial t}$ at some rate of $\Delta t$ is a simulation issue.  Model delays $\Delta T$ are simulated at sampling times $\Delta t$. Indeed, if considering synchronous computations this distinction is meaningless (the obvious choice is $\Delta t = \Delta T$), whereas it is required for asynchronous computations, as made explicit in the sequel.
+
+\subsubsection{From synchronous to asynchronous computations}
+
+In this aforementioned context, synchronous computations would refer to the standard numerical method used to solve a set of ordinary differential equations. After choosing a temporal resolution $\Delta t$, any value $V_i(t+\Delta t)$ is evaluated according to $V_i(t)$ and $\Delta V_i(t)/\Delta t$ using one of the numerous implicit or explicit available methods (Euler, Runge-Kutta \cite{Press:1988}, etc.). Since any value $V_i(t)$ may depend on $V_j(t)$, it is important to update any $V_j(t)$ only once all values $V_i(t+\Delta t)$ are known. This may require the synchronization from a centralized control, signaling units that are allowed to update their {\em public} state. Even if not all states are required at each step, as for example with the Gauss-Seidel method \cite{Bertsekas:1991}, the central clock is still needed (because we need to ensure exactly one evaluation for any unit), thus the computation remains macroscopically synchronous in this sense.\\
+
+A fully asynchronous system therefore implies to circumvent such global or centralized clock and to let the system operate under fully distributed control. At a computational level, this would mean that each processor is an independent unit with a local notion of time and is thus updated separately. From a more biological point of view, this would reflect several ideas:
+\begin{itemize}
+\item biological delays related to the cortical map topography, with three facets:
+  \begin{itemize}
+   \item fixed delay related to known connection length
+   \item dynamic delays related to on-going processing or transmission
+   \item random delays related to uncertainty or lack of knowledge
+  \end{itemize}
+\item local computation effects such as adaptive asynchrony, i.e. the fact that a unit adapts its state with parsimony: the more its value is stable, the less its change has to be output rapidly;
+\item mesoscopic events such as activity synchronization, rhythms, or sudden activity change.
+\end{itemize}
+
+At this modeling level, where parallel processing is a key aspect of neural computation, we may have different run times and units are not supposed to wait for each other. 
+Additionally, transmission delays contribute to desynchronize the exchanged information. As described here, both phenomena are obvious to take into account in a "fully asynchronous" paradigm. In other words, asynchronism is not only an implementation issue, it is also a modeling issue.
+
+\subsubsection{The Asynchronous model}\label{paradigm}
+
+Following \cite{Mitra:1987}, let us propose the following asynchronous computation paradigm. Each processing implementing equation~(\ref{eq:DNF-discrete}) for an index $i$ is referred to as unit.
+
+At a given sampling time of index $t$, only a subset of arbitrarily chosen units $U(t)$ is evaluated. This very simple scheme includes synchronous relaxation (i.e., $U(t)$ contains all the units), serial or deterministic Gauss-Seidel relaxation (i.e., $U(t)$ contains one unit at each update, each cannot be updated more than once before the whole system is updated), other asynchronous schemes (e.g., $U(t)$ contains one or more units, randomly drawn with or without replacement), etc..
+
+In addition, each connection between two units $i$ and $j$ is supposed to have an implementation delay $\Delta_{ij}(t)$ constant or variable: the information $V_j(t)$ is available to the unit $i$ only after such a delay, indeed different from the simulation delay $\Delta t$ and modeling delay $\Delta T$.
+
+The key point is the following: each unit does not compute one sample $V_i(t)$ given some updated values, but {\em calculates an approximation of the whole trajectory} $\{V_i(t), 0 \leq t \}$, given some delayed knowledge from the connected units $\{\hat{V}_j(t), 0 \leq t < t_{ij}(t), j \in M\}$:
+\begin{itemize}
+\item Initially, each unit only knows its initial value $V_i(0)$, given {\em a priori}, and must have specified an initial value of the connected units trajectories (e.g., assuming $V_j(t) \simeq V_j(0)$, as best knowledge when nothing is calculated).
+\item Then, each unit starts estimating an approximation of a part of its related trajectory, up to some time $t_i$: $\{V_i(t), 0 \leq t < t_i\}$, and communicates the knowledge asynchronously to other units.
+\item When receiving some knowledge, it updates it own approximation, and so on.
+\end{itemize}
+
+The paradigm thus requires (i) the initial values to match the expected initial values for all units and (ii) each unit to be able to solve the initial value problem specified in~(\ref{eq:DNF-discrete}) (i.e. to calculate a convergent approximation of the solution trajectory). Surprisingly enough, no additional restriction is placed on the implementation. Very clearly here, modeling and simulation times are entirely unlinked. Though this seems to be an intractable paradigm thanks to the specific form of the equation, we are going to make explicit that the estimation process can very efficiently be implemented in this case. The original framework is a bit more general (thus still interesting for generalizations of the present framework) but the present work is precisely to make it specific to the present framework.

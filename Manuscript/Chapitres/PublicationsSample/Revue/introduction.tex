@@ -1,0 +1,66 @@
+\subsection{Introduction}
+
+%%  - Pourquoi aynchroniser : distribué + bio
+%%     -- Do you think seriously your model is parallel and/or distributed ?
+%%     -- One CPU to rule them all !
+%%     -- Anyway, Nature is event-driven...
+%%     -- Asynchronous computing for the dummies
+%%  - Asynchrone pour les nuls
+%% - What is the paper about:
+%%  1. General framework
+%%     - DNF (system)
+%%     - Asynchronous definitions 
+%%       -> au niveau general (or not ?)
+%%       -> Specific case of DNF
+%% General problematique (issues)
+%%  2. before asynchronicity: discretization steps 
+%%       => Space discretization (A priori fixed) 
+%%       => Time  discretization (Euler & friends) Th 
+%%       => Value discretization (Robert versus Mitra) Wa
+%%  3. How to ensure convergence et calcul guaranty (at the very least -> Mitra) Wa
+%%        (compared to synchronous computations)
+%%         continuous value mitra
+%%  4. Implementation: deds (discrete event dynamic system) Th
+
+
+Brain is mostly event driven ! When a spike is sent along an axon, its processing is taken into account at the level of the dendrite (and later integrated in the soma), when arriving at the synaptic cleft. This triggers a complex chain of bio-chemical processings allowing the signal to be processed via the synapse and to be sent further along the dendrite, etc. There is consequently no need of any kind of central clock (or centralized signal) to coordinate such processing. This is truly distributed and asynchronous. And these properties are enforced anytime over the entire network (a.k.a. the brain). However, this does not prevent some synchronization to happen between neurons as it has been reported in a number of works, but this occurs only on the basis of local interactions without the need of any kind of central clock nor supervisor. If we now turn to the artificial neural networks paradigm, we realize that this asynchronicity property is hardly enforced in any model. Most numerical methods used to simulate the underlying differential evolution equations require an implicit central clock. Even the most complex and elaborated spiking neuron models are doomed with such considerations if they do not rely on explicit event-driven simulations\footnote{See e.g. \url{http://mvaspike.gforge.inria.fr/} for such implementation}. This is the case for synchronous computations, in which a central mechanism updates each unit (e.g. neuron model) at the same clock-time but less obvious is the fact that this is also the case for some asynchronous paradigms, in which, for instance, a central mechanism randomly draws without replacement the units to sample at a given regular clock time, in order to simulate asynchronous computation. The knowledge of which unit has been sampled or not must be centralized. More generally, usual strategies require a complete information about each part of the current state in order to deliver from a centralized locus the signal of the next step. Furthermore, this implies the random sampling events to occur at very regular times. It is thus implicitly assumed that the time is global to the whole system. Computation is distributed, but the computation time and clock remain centralized.
+
+What are the consequences ? At the computational level, this means that if we are using a multi-processor architecture, processors that finish their task early have to wait, doing nothing, until others finish. The more synchronization points are set, the more performance degrades.  At the system dynamics level, such regular updates may induce spurious synchronization mechanisms.  At the biological modeling level, we must assume the existence of a global ``universal'' clock which is a reasonable approximation for small dynamical systems, but less obvious when considering several cortical maps in interactions with complex connection delays.
+
+The goal of this article is thus to consider literature in relevant domains, namely cellular automata \cite{Fates:2005,Fates:2008,Garcia:2006,Barret:1999} and parallel computations \cite{Bertsekas:1991,Bertsekas:1997}, and to make the link with computational neuroscience. More specifically, we will introduce the dynamic neural fields theory that offer a very general computing framework for the modeling of cortical phenomena and since this theory is continuous in both space, time and values, we will pay special attention at the discretization procedure since we aim at using results from the discrete event systems specification to simulate discrete time systems and approximate, as closely as desired, differential equation systems. At this stage, we do not aim at giving a complete state-of-the-art on asynchronous models, but rather to show how a general construct, called here {\em fully asynchronous paradigm}, provides a constructive answer to asynchronous computation, especially in the particular case of artificial neural networks.
+
+%% Thus, we briefly present in section~\ref{models} some computational models dealing with asynchrony aspects in discrete and continuous dynamic systems. Then, we focus in section~\ref{euler} on the bias induced by the discretization of continuous dynamic systems, allowing us to explain the foundation of well-defined asynchronous computation regarding dynamic neural fields, in section~\ref{mitra}.  Finally, we propose, in section~\ref{deds}, to use an event-driven paradigm, as an adequate framework to simulate an intrinsically asynchronous system, before concluding this work.
+
+%% The DEVS formalism \cite{Zeigler:2000} provides a way of expressing discrete event models and a basis for an open distributed simulation of dynamic environments in which ``events`` occur. It also supports hierarchical modular construction, such as microscopic neurons, mescoscopic columns, etc. Using DEVS abstractions to capture the spiking nature features of biological neurons that were not represented in conventional artificial neural networks, started with Pioneer works of \cite{watts:1994, vahie:1996}, exploiting these capabilities to perform intelligent control tasks.
+
+%% - What is the paper about:
+%%  1. General framework
+%%     - DNF (system)
+%%     - Asynchronous definitions 
+%%       -> au niveau general (or not ?)
+%%       -> Specific case of DNF
+%% General problematique (issues)
+%%  2. before asynchronicity: discretization steps 
+%%       => Space discretization (A priori fixed) 
+%%       => Time  discretization (Euler & friends) Th 
+%%       => Value discretization (Robert versus Mitra) Wa
+%%  3. How to ensure convergence et calcul guaranty (at the very least -> Mitra) Wa
+%%        (compared to synchronous computations)
+%%         continuous value mitra
+%%  4. Implementation: deds (discrete event dynamic system) Th
+
+
+%% Since it is rather counter-intuitive to rely implicitly on such a centralized scheme, we would like to study to which extent we can remove this central clock assumption and implement a really decentralized (asynchronous) computation.
+
+%%  This has been already studied in the case of cellular automaton \cite{Fates:2005,Fates:2008,Garcia:2006,Barret:1999} and parallel computations \cite{Bertsekas+Tsitsiklis91,Bertsekas+TsitsiklisBook97}
+
+%% In this context, asynchronous mechanism at the mesoscopic level may represent:
+%%  \\ - biological delays related to the cortical map topography, with three facets: 
+%%         fixed delay related to known connection length, 
+%%         dynamic delays related to on-going processing or transmission, random delays related to uncertainty or lack of knowledge about the two previous mechanisms;
+%%  \\ - local computation effects such as adaptive asynchrony, i.e. the fact that a unit adapts its state with parsimony: 
+%%         the more its value is stable, the less its change has to be output rapidly;
+%%  \\ - mesoscopic events such as activity synchronization, rhythms, or sudden activity change.
+
+%% As soon as such semantics is targeted, there is no place for a central mechanism to decide ``a-priori'' which unit is going to update its state, 
+%% whereas each unit has to calculate on its own, both what is its next value and when its next value is going to be updated. 

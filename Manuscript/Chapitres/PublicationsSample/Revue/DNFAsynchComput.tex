@@ -1,0 +1,31 @@
+\section{Dynamic neural field : Asynchronous computation}
+
+\input{general-framework}
+\subsection{Dynamic neural field : Asynchronous system}
+\subsubsection{synchronous computation}
+In a synchronous computation mode of a dynamic system, operations (units) are coordinated under a centralized control of a fixed clock signal. 
+At every time step all the units are updated simultaneously.
+In a serial mode, at each time step units are evaluated one by one respecting at every iteration the result of the previous one (Gauss-Seidel method). This introduces a kind of partial asynchrony in the system but the central clock is still needed, so it is still macroscopically synchronous. 
+Since it is rather counter-intuitive to rely implicitly on such a centralized scheme, we would like to study to which extent we can remove this central clock assumption in order to implement a really decentralized (asynchronous) computation.
+\subsubsection{asynchronous computation}
+In a fully asynchronous system, in contrast, there is no global clock. The system operates under distributed control. 
+At the computational level, this means that processors are independent units. Each one has his "local" time and is updated separetaly.
+At the biologically modeling level, this may present:
+ \\ - biological delays related to the cortical map topography, with three facets: 
+        fixed delay related to known connection length, 
+        dynamic delays related to on-going processing or transmission, random delays related to uncertainty or lack of knowledge about the two previous mechanisms;
+ \\ - local computation effects such as adaptive asynchrony, i.e. the fact that a unit adapts its state with parsimony: 
+        the more its value is stable, the less its change has to be output rapidly;
+ \\ - mesoscopic events such as activity synchronization, rhythms, or sudden activity change.
+
+Following \cite{Mitra:1987} and instantiating its paradigm in the case of a dynamic neural field, let us propose the following asynchronous computation model. At a given sampling time of index $i$,  only a subset of arbitrarily chosen units $U(i)$ is evaluated. This very simple scheme includes synchronous relaxation (i.e., $U(i)$ contains all the units), serial or deterministic Gauss-Seidel relaxation (i.e., $U(i)$ contains one unit at each update, each can not be updated more than once before the hole system is updated), other asynchronous schemes (e.g., $U(i)$ contains one or more units, randomly drawn with or without replacement), etc.. The original framework is a bit more general, while we decline it in our context only.
+%Each unit of index $j$ is implemented by a task $T_j$, which calculates the unique solution of the initial value problem of equation~(2) at a given simulation time $t$.
+%At a given sampling time of index $i$, a subset of tasks $U(i) = \{ \cdots T_{j_k} \cdots \}$ whose completion is comprised in the $i$-th update is defined. 
+%This very simple scheme includes synchronous relaxation (i.e., $U(i)$ contains all tasks at each update), 
+%deterministic Gauss-Seidel relaxation (i.e., $U(i)$ contains only one task at each update, one after another),
+%other asynchronous schemes (e.g., $U(i)$ contains one or more tasks, randomly drawn with or without replacement),
+%etc.. The original framework is a bit more general, while we decline it in our context only.
+
+In addition, each connection between two units $j$ and $k$ is supposed to have a sampling delay $d$ constant or variable between $d\_{min}$ and $d\_{max}$, meaning that the information $V_k(t)$ is available to the task $j$ after a delay $d$.
+This is different from a simulation delay, meaning that the information $V_j(t)$ is a function of $V_k(t-\delta(t))$ though the latter can obviously be simulated in this framework. 
+%% a revoir 

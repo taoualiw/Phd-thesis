@@ -1,0 +1,66 @@
+\DontNumberThisInToc
+\DontFrameThisInToc
+\glsresetall
+\ChapterNoNumberCitation{Sélection de l'action emergeant de la topology intrinsèque}{Yes I can}{}{10cm}
+\section{Introduction}
+%%
+ Le colliculus supérieur est une structure multimodale de tronc cérébral impliquée dans plusieurs fonctions cérébrales complexes. Il est impliqué dans le processus fondamental de l'oculomotricité qui a été intensivement étudié électrophysiologiquement et comportementalement. Plusieurs modèles complexes et interprétations fonctionnelles sans réussir à convenir sur un consensus clair au sujet des observations les plus fondamentales aussi bien au niveau électrophysiologique qu'au niveau comportemental. 
+%%%
+Les couches intermédiaires et plus profondes du colliculus supérieur [\gls{sc}] sont impliquées dans la génération de saccades oculaires en réponse à un stimulus visuel. Puisque beaucoup d'aires corticaux et structures sous-corticales projettent vers ces couches [mai 2006], de nombreux flux d'activité neuronale convergent vers \gls{sc}. En conséquence, plusieurs modèles du \gls{sc} ont été proposé \cite{VanGisbergen:1985, Droulez:1991, Arai:1994, Breznen:1997, Lefevre:1998, Gancarz:1999, 2001:Court, Trappenberg:2001, Badler:2002, Goossens:2006, Nakahara:2008, Marino:2008, Trappenberg:2012} pour simuler numériquement plusieurs caractéristiques du comportement visuo-moteur et de ses circuits neuronaux fondamentaux. La plupart de ces modèles ont été conçus pour aborder des questions spécifiques et jusqu'au aujourd'hui il reste très difficile d'avoir une vision synthétique qui caractérise la contribution de \gls{sc} à la génération des saccades visuelles. Dans le meilleur des cas, un modèle complet  comprenant tous ces mécanismes pourrait entièrement expliquer comment cette structure contribue à la génération des saccades mais l'unification peut être hors de portée parce que la plupart de ces modèles ne sont pas compatibles les uns avec les autres. Ils sont fondés sur différentes hypothèses liées à l'architecture, aux afférences ou aux caractéristiques fonctionnelles pour expliquer les mêmes phénomènes.\\
+
+Dans ce travail, nous avons décidé d'identifier les caractéristiques communes à tous ces modèles pour établir notre modèle. Ces caractéristiques bien-admises sont la représentation log-polaire de la surface rétinienne dans les couches profondes de \gls{sc} \cite{Ottes:1986}, le profil de connectivité latérale dans \gls{sc} et la dynamique de l'activité de neurones de Sc. Le modèle en résultant est inévitablement plus simple que l'autre models and proposé un peut par conséquent s'attendre à une puissance fortement diminuée d'explication et de prévision. Cependant, après la confrontation de nos simulations modèles contre des données expérimentales, nous avons découvert les propriétés prévisionnelles en dynamique de la population intérieure qui pourrait expliquer la représentation décrite dans des études comportementales. \\
+
+Nous avons choisi de mettre en application un modèle minimaliste du colliculus supérieur, prenant en considération juste les propriétés de base bien reconnues, au sujet de la transformation visuomotrice et de la connectivité latérale. Nous rapportons un grand ensemble de résultats que nous avons pu reproduire et qui ont été souvent exploités pour valider des modèles beaucoup plus complexes d'explication. Nous réclamons ici que des hypothèses plus simples sont suffisantes pour expliquer ces résultats et que plus de propriétés que nous croyons émergent simplement des caractéristiques locales et bien connues.\\
+\section{Méthodes}
+
+
+Nous avons simulé numériquement un modèle de réseau de neurones de deux couches topologiquement organisées en utilisant le formalisme de \textit{champs neuronaux dynamiques} [\gls{dnf}] décrit dans le premier chapitre \cite{Amari1977}. La première couche correspond à la rétine et la deuxième couche à sa projection log-polaire sur le colliculus supérieur profond . Comme expliqué dans l'introduction, le modèle a été établi seulement sur la base des hypothèses communes à d'autres modèles de \gls{sc}:\\
+
+\begin{itemize}
+
+\item[$\bullet$] Un stimulus physique (une cible) correspond à une petite activation gaussienne sur une surface plane qui néglige la déformation géométrique due à la courbure du globe oculaire. Cette surface correspond à la rétine du modèle. Elle est réduite à une couche de photorécepteurs et nous considérons que le niveau de l'activation de ces récepteurs est proportionnel à l'intensité de la lumière.\\% ? ? ? Référence
+
+\item[$\bullet$] On assume que le lieu de l'activation sur \gls{sc} code l'emplacement de la cible dans le champ visuel et que cette activation est à l'origine de la saccade qui apportera l'image de la cible sur la fovéa (fovéation). Deux activations voisines dans la couche \gls{sc} correspondent aux localisations de cibles voisines dans le champ visuel (code topographique) \cite{Schiller:1972, Wurtz:1972}.\\
+
+\item[$\bullet$] La projection du champ visuel sur la surface colliculaire est basée sur le modèle quantitatif de \cite{Ottes:1986} qui propose qu'une fonction de cartographie logarithmique assure la transformation des coordonnées rétiniennes en coordonnées colliculaires. Nous supposons également que le stimulus entier est projeté sur le \gls{sc} et non pas seulement le centre.\\% comme dans beaucoup de modèles. ? ? ? Référence
+
+\item[$\bullet$] Nous considérons le colliculus supérieur comme étant une carte homogène et uniforme d'unités neurales \cite{Trappenberg:2001,Droulez:1991}. En plus de ses afférences rétiniennes excitatrices, d'autres entrées excitatrices et inhibitrices latérales qui dépendent de la distance entre les neurones sont considérées, comme proposé dans beaucoup de modèles \cite{Arai:1994, Droulez:1991, Gancarz:1999, Lefevre:1992, Optican:1995, 2001:Court, Trappenberg:2001, Nakahara:2008}.\\
+
+\item[$\bullet$] Les influences des aires corticales, des ganglions de la base et du cervelet sur l'activité colliculaire ne sont pas considérées ici.\\
+\end{itemize}
+
+\paragraph{L'entrée rétinienne}
+
+Le hémichamp visuel $V$ $[0^\circ,90^\circ]\times[-90^\circ,90^\circ]$ est tracé sur l'espace continue $R$ $[0,1]\times[-1,1]$ correspondant à la moitié d'une rétine. N'importe quel stimulus $S$ présenté dans $V$ aux coordonnées polaires $(\rho_s,\phi_s)$ (en degrés) est tracé sur $R$ aux coordonnées cartésiennes $(u_s, v_s)$. Nous avons considéré des stimuli ronds avec une distribution gaussienne de la luminosité tels que l'activité $U_r (u, v)$ en un point $(u, v)$ de $R$ en présence d'un stimulus S est donnée par l'équation suivante :
+
+\begin{align}
+  U_r(u,v)= C~exp\left(-\frac{\vert u - u_s\vert^2 + \vert v - v_s \vert^2}{2{\sigma_c}^2}\right)
+\end{align}
+
+avec $(u_s, v_s)$ est le centre de la projection du stimulus sur la carte R, $\sigma_c$ est la taille angulaire du stimulus et $C$ est l'activation maximale dans $R$ (correspondant à l'intensité maximale du stimulus). Sauf indication contraire, les stimulus sont considérés ayant approximativement ayant un diamètre angulaire de 1° dans la rétine, qui correspond à $\sigma_c=1/90$.
+
+\paragraph{La projection visuelle sur le colliculus supérieur profond }
+
+Selon la description de \cite{Robinson:1972}, la projection de $R$ sur \gls{sc} est rapprochée en utilisant une transformation log-polaire, qui réduit le modèle de \gls{sc} à une carte bi-dimensionnelle. Une approximation mathématique de cette transformation a été proposée par \cite{Ottes:1986}.Il s'agit de la projection standard utilisée dans la plupart des modèles computationnels du colliculus \cite{Optican:1995, Trappenberg:2001, Nakahara:2009} :
+
+\begin{align}
+  x &=
+  B_x~log\left(\frac{\sqrt{\rho^{2}+2A\rho|\cos{(\phi)}|+A^{2}}}{A}\right) \notag \\
+  y &=
+  B_y~arctan\left(\frac{\rho \sin{(\phi)}}{\rho|\cos{(\phi)}|+A}\right)
+  \label{eq:mapping}
+\end{align}
+
+où $(x,y)$ représente les coordonnées cartésiennes dans \gls{sc} (en millimètre), $(\rho,\phi)$ les coordonnées polaires dans $R$ (en degrés). $Bx$ (en millimètres) est une constante déterminant la taille de la carte colliculaire le long de l'axe horizontal. $By$ (en millimètres) est une constante déterminant la taille de la carte colliculaire le long de l'axe vertical. $A$ (en degrés) est une constante qui (avec le rapport $Bx/By$) détermine la forme de la carte. Un stimulus à $\rho=90°$ et à $\phi=-90°$ active une cellule à $x=4,8mm$ (correspondant à la longueur d'un colliculus) et à $y=-2,76mm$ (correspondant à la moitié de sa largeur) \cite{Ottes et autres, 1986}. Cette transformation log-polaire amplifie la représentation de la région fovéale \ref{}.
+\begin{figure}
+\begin{tabular}{|c|c|c|c|}
+
+  A&\includegraphics[width=.4\textwidth]{Pics/mapping-3} & B&\includegraphics[width=.4\textwidth]{Pics/weights-profile}\\
+ C&\includegraphics[width=.75\textwidth]{Pics/topology}&D&\includegraphics[width=.75\textwidth]{Pics/single-stimulus}
+
+\end{tabular}
+  \caption{
+Description du modèle. A. Mapping des coordonnées polaires dans l'espace visuel en coordonnées cartésiennes dans \protect\gls{sc}. La projection rétinotopique modifie les propriétés géométriques de l'image tout en gardant les relations de voisinage. \`A gauche, le hémichamp visuel droit (lignes des iso-directions et des demi-cercles d'excentricité constante). \`A droite la carte représentant le colliculus avec des lignes d'iso-amplitudes de \gls{sc} $(2° à 90°)$ et des lignes d'iso-directions $(- 90° à 90°)$ sont indiquées. %Les coordonnées polaires visuelles $(\rho, \phi)$ sont transformées en coordonnées colliculaires cartesiennes $(x, y)$ en utilisant les équations \ref{eq:mapping}. Les lignes colorées illustrent la magnification de la représentation des stimuli dans la région fovéale. B. Le pattern des connexions intracolliculaires (noires) résultant de la différence entre une fonction excitatrice locale (bleue) et une fonction inhibitrice globale (rouge). C. Relation topologique entre la surface rétiniènne isotropique (rouge), les projections colliculaire anisotropiques correspondant à la présentation d'un stimulus dans le champ visuel (pourpre) et la connectivité latérale isotropique (bleue) dans le colliculus supérieur. D. La projection d'un stimulus visuel gaussien (situé à (2°,0°)). Au milieu, la projection d'entrée à la carte colliculaire. \`A droite l'activité du colliculus supérieur enregistrée après stabilisation de son activité.
+}
+  \label{fig:mapping}
+\end{figure}

@@ -1,0 +1,424 @@
+\documentclass[11pt,utf8x]{thloria}
+%
+\usepackage [frenchb]{babel}
+\usepackage{bm,amsfonts,amssymb,amsmath}
+%\usepackage{natbib }% fallait l'ajouter pour le bibtex style
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{pdfpages}
+\usepackage{url}
+%\usepackage{ecrc,subfigure,color}
+\usepackage{hyperref}
+\usepackage{bm,amsfonts,amssymb,amsmath}
+\usepackage{url}
+%\usepackage[authoryear]{tlnatbib}
+\usepackage{packages/named}
+\usepackage{cuted}
+\usepackage{ucs}
+\usepackage{tabularx}
+%\usepackage{breakcites}
+\usepackage[utf8x]{inputenc}
+%----------------------------------------------------------------------
+%                     Chargement de quelques packages
+%----------------------------------------------------------------------
+
+% Si l'on veut produire une version PDF avec distiller ou pdflatex :
+%\usepackage[pageanchor=false]{tlhypref}
+% Si l'on produit le PDF avec pdflatex, ceci remplace la plupart
+% des polices EC par des polices CM, plus adaptees a la generation de PDF,
+% car ayant des equivalents PS :
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{moreverb}
+\usepackage{supertabular}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{cite}
+%\usepackage{floatfig}
+\usepackage{wrapfig}
+% Si on veut le style de bibliographie named :
+%\usepackage{named}
+
+%\usepackage[acronym]{glossaries}
+%\usepackage{glossaries}
+\usepackage[
+nonumberlist, %do not show page numbers
+acronym,      %generate acronym listing         %show listings as entries in table of contents
+section]      %use section level for toc entries
+{glossaries}
+% Pour tout savoir sur les polices
+% (cette ligne n'est pas necessaire au traitement du fichier)
+%\usepackage[infoshow]{tracefnt}
+
+% Pour les figures PS :
+\usepackage{graphicx}
+
+% Si on veut des mini-tables des matieres (utiliser minitoc-hyper 
+% en conjonction avec tlhypref) :
+
+
+\usepackage[french]{minitoc}
+%\usepackage[T1]{fontenc}
+
+
+%-------------------------------------------------------------------
+%           Corrections pour les imprimantes recto-verso
+%                          (A AJUSTER)
+%-------------------------------------------------------------------
+
+\ShiftOddPagesRight{-1mm}
+\ShiftOddPagesDown{2.5mm}
+%\ShiftEvenPagesRight{0mm}
+%\ShiftEvenPagesDown{0mm}
+
+
+%-------------------------------------------------------------------
+%                             Marges
+%-------------------------------------------------------------------
+
+% pour positionner les vraies marges:
+%\SetRealMargins{1mm}{1mm}
+
+%-------------------------------------------------------------------
+%                             En-tetes
+%-------------------------------------------------------------------
+
+% Les en-tetes: quelques exemples
+%\UppercaseHeadings 
+%\UnderlineHeadings
+%\newcommand\bfheadings[1]{{\bf #1}}
+%\FormatHeadingsWith{\bfheadings}
+%\FormatHeadingsWith{\uppercase}
+%\FormatHeadingsWith{\underline}
+\newcommand{\ChapterNoNumberCitation}[4]{  % \ChapterCitation{chapter title}{citation}{author}
+  \chapter*{#1}
+  \begin{flushright}
+    \begin{minipage}{#4}
+      <<~#2~>>\\
+      \hspace*{\fill} {\em #3}
+      \vspace{2cm}
+    \end{minipage}
+
+  \end{flushright}}
+\newcommand{\ChapterNumberCitation}[4]{  % \ChapterCitation{chapter title}{citation}{author}
+  \chapter{#1}
+  \begin{flushright}
+    \begin{minipage}{#4}
+      <<~#2~>>\\
+      \hspace*{\fill} {\em #3}
+      \vspace{2cm}
+    \end{minipage}
+
+  \end{flushright}}
+
+\newcommand{\Citation}[3]{ 
+  \begin{flushright}
+    \begin{minipage}{#3}
+      <<~#1~>>\\
+      \hspace*{\fill} {\em #2}
+      \vspace{2cm}
+    \end{minipage}
+
+  \end{flushright}}
+
+\newcommand\upun[1]{\uppercase{\underline{\underline{#1}}}}
+\FormatHeadingsWith\upun
+
+\newcommand\itheadings[1]{\textit{#1}}
+\FormatHeadingsWith{\itheadings}
+
+
+
+% pour avoir un trait sous l'en-tete:
+\setlength{\HeadRuleWidth}{0.4pt}
+
+%-------------------------------------------------------------------
+%                         Les references
+%-------------------------------------------------------------------
+
+\NoChapterNumberInRef
+\NoChapterPrefix
+
+%-------------------------------------------------------------------
+%                           Brouillons
+%-------------------------------------------------------------------
+
+% ceci ajoute une marque `brouillon' et la date
+%\ThesisDraft
+
+%-------------------------------------------------------------------
+%                   Pour collecter un glossaire et un index
+%-------------------------------------------------------------------
+%\newglossary[slg]{symbols}{sym}{sbl}{List of Symbols}
+%\makeglossary
+%Generate a list of symboles
+\newglossary[slg]{symbolslist}{syi}{syg}{List of symbols}
+
+%Remove the dot at the end of glossary descriptions
+\renewcommand*{\glspostdescription}{}
+
+%Activate glossary commands
+\makeglossaries
+\input{acro}
+\makeindex
+
+\begin{document}
+
+      \OddHead={{\leftmark\rightmark}{\hfil\slshape\rightmark}}
+      \EvenHead={{\leftmark}{{\slshape\leftmark}\hfil}}
+      \OddFoot={\hfil\thepage}
+      \EvenFoot={\thepage\hfil}
+      \pagestyle{ThesisHeadingsII}
+
+%-------------------------------------------------------------------
+%                          Encadrements
+%-------------------------------------------------------------------
+
+% encadre les chapitres dans la table des matieres:
+% (ces commandes doivent figurer apres \begin{document}
+
+\FrameChaptersInToc  
+%\FramePartsInToc
+\setcounter{secnumdepth}{3}
+
+%-------------------------------------------------------------------
+%            Reinitialisation de la numerotation des chapitres
+%-------------------------------------------------------------------
+
+% Si la commande suivante est presente,
+% elle doit figurer APRES \begin{document}
+% et avant la premiere commande \part
+\ResetChaptersAtParts 
+
+%-------------------------------------------------------------------
+%               mini-tables des matieres par chapitre
+%-------------------------------------------------------------------
+
+% preparer les mini-tables des matieres par chapitre.
+% (commande de minitoc.sty)
+\dominitoc
+
+%-------------------------------------------------------------------
+%                         Page de titre:
+%-------------------------------------------------------------------
+
+\ThesisTitle{Modélisation de Populations Neuronales pour l'Int\'egration Visuo-motrice :\\ Dynamiques et D\'ecisions}
+\ThesisDate{26 septembre 2012}
+\ThesisAuthor{Wahiba TAOUALI}
+
+
+% Type de la these (autres solution: \ThesisINPL, \ThesisNancyII)
+\ThesisNancyI
+
+% Jury:
+
+% (ne pas mettre de \\ apres la derniere entree)
+
+% Exemple de creation d'une nouvelle categorie dans le jury:
+
+\NewJuryCategory{Directeur}{\it Directeurs:}
+{\it Directeurs:}
+
+%\family={Mon fr\`ere\\Ma s\oe ur}
+
+\def\blanc{\hspace*{1cm}}
+
+%\President    = {}
+\Rapporteurs  = {Benoit GIRARD, Charg\'e de Recherche HDR CNRS, UMPC–Paris 6\\
+                 Thomas BORAUD, Directeur de Recherche CNRS, Université Bordeaux 2\\
+                 \blanc \\
+                }
+\Examinateurs = {Mathias QUOY, Professeur des universités, ENSEA - IUT de Cergy-pontoise \\
+                Sylvain CONTASSOT-VIVIER, Professeur des universités LORIA, Universit\'e Lorraine }
+%\Invites=       {}
+\Directeur = {Fr{\'e}d{\'e}ric Alexandre, Directeur de Recherche Inria, Universit\'e Lorraine
+     \\ Nicolas Rougier, Charg\'e de Recherche HDR Inria, Universit\'e Lorraine}
+% Creation de la page de titre:
+\MakeThesisTitlePage
+
+% on peut en faire plusieurs:
+%\MakeThesisTitlePage
+
+%\ThesisINPL
+%\MakeThesisTitlePage
+
+
+%-------------------------------------------------------------------
+%                          Les resumes
+%-------------------------------------------------------------------
+% (si le resume' apparait sur une colonne etroite, avec la
+% bibliographie a gauche, c'est sans doute parce que vous avez
+% oublie' de generer les fichiers d'index et de glossaire...)
+
+%-------------------------------------------------------------------
+
+
+
+%-------------------------------------------------------------------
+%                            dedicace
+%-------------------------------------------------------------------
+%\DontFrameThisInToc
+\begin{ThesisDedication}
+\`A la force de nos convictions.\\
+\`A l'intelligence, aux passions qui jamais ne s'éteindront!\\
+\`A la vie, sous toutes ses expressions.
+\end{ThesisDedication}
+
+%-------------------------------------------------------------------
+%                          remerciements
+%-------------------------------------------------------------------
+
+%\DontFrameThisInToc
+\begin{ThesisAcknowledgments}
+
+Je tiens tout d'abord à remercier mes directeurs de cette thèse, M. Frédéric Alexandre et M. Nicolas Rougier pour l'encadrement, l'encouragement, les conseils, le partage de connaissances et surtout la superbe entente et l'agréable ambiance de travail.\\
+
+Je remercie tous ceux sans qui cette thèse ne serait pas ce qu'elle est. Je pense ici en particulier à M. Thierry Vieville, qui a cru en moi et qui m'a largement encouragée, M. Laurent Goffart, M. Axel Hutt, M. Jean-Yves Marion et M. Bart Lamiroy.\\
+
+Je remercie M. Vincent Chevrier pour l'expérience d'enseignement, ainsi que tous mes collègues et mes étudiants à l'ESSTIN pendant mes 3 ans de monitorat.\\
+
+Je remercie les rapporteurs de ma thèse M. Benoit Girard et M. Thomas Boraud, ainsi que les examinateurs M. Mathias Quoy et M. Sylvain Contassot-Vivier, pour avoir accepté d'évaluer mon travail et pour leurs remarques qui m'ont permis d'améliorer la qualité de ce manuscrit.\\
+
+Je passe ensuite une dédicace amicale à tous les jeunes gens que j'ai eu le plaisir de côtoyer durant ces quelques années à Nancy, principalement Inès (soeurette), Ameni (spontanée), Najet (stricte), Inès (courageuse), Hana (calme), Sarah (iskandaranya), Bilel (mad3ouk), Walid (charchabil), Karim (samir), Mohammed (mafrout), Mohammed (clubiste), Mehdi (ha33), Aymen (nein), Aymen (chicha), Oussema (kifech), Gaith (Floyd), Charif (tunisyrien), Fabrice (vosgien), Hichem (Iris), Mehdi (m3ankech), Adnène (violet), Moutie (trankouch), Ammar (father), Caroline (CNN)...et qui ont supporté ma folie, ma présence d'esprit et ma joie de vivre.\\
+
+Je tiens aussi à mentionner le plaisir que j'ai eu à travailler au sein de l'équipe CORTEX, et j'en remercie ici tous les membres, particulièrement mes collègues de bureau: Maxime, Mathieu, Carolina, Thomas, Georgeous, Carlos ...\\
+
+Une pensée spéciale à tous mes anciens profs et camarades de lycée, de prépa et d'école d'ingénieurs qui m'ont soutenue de loin.\\
+
+Enfin, je remercie chaleureusement ma chère famille, en particulier, mon père Houcine, ma mère Nejia, la bande des W (Wassila, Wafa, Wassim, Walid, Wajih), mon oncle Ahmed, ma grand-mère Meriam, pour TOUT.\\
+
+
+\end{ThesisAcknowledgments}
+
+
+
+%-------------------------------------------------------------------
+%                  ecriture de `Chapitre' et `Partie' 
+%                      dans la table des matieres
+%-------------------------------------------------------------------
+
+\WritePartLabelInToc
+\WriteChapterLabelInToc
+
+%-------------------------------------------------------------------
+%                        table des matieres
+%-------------------------------------------------------------------
+
+\tableofcontents
+
+%-------------------------------------------------------------------
+%              Exemple d'utilisation de \SpecialSection
+%-------------------------------------------------------------------
+
+
+
+
+%\FrameThisInToc
+%\DontNumberThisInToc
+%\part{Une partie}
+
+% Pour ne pas avoir le mot `Chapitre' au debut de chaque chapitre.
+%\NoChapterHead
+\DontWriteThisInToc   
+\listoffigures
+\WriteThisInToc
+
+
+\mainmatter
+\FrameThisInToc
+\NumberThisInToc
+
+
+% La commande \mainmatter (nouvelle commande LaTeX2e) permet de passer
+% a la numerotation arabe (ce que fait \pagenumbering{arabic}) 
+% et de faire commencer la nouvelle page 1 sur une page impaire.
+% On evitera donc d'utiliser directement \pagenumbering{arabic}.
+
+\include{Chapitres/GeneralIntroduction}
+
+\NumberThisInToc
+
+
+\include{Chapitres/Chapter1}
+%\setcounter{Chapter}{1}
+\include{Chapitres/Chapter2}
+\include{Chapitres/Chapter3}
+\include{Chapitres/Chapter4}
+
+%\setcounter{Chapter}{4}
+%\include{Chapitres/ChapterBG}
+%\include{Chapitres/}
+%\include{Chapitres/}
+%\include{Chapitres/Conclusion.II}
+
+
+\include{Chapitres/GeneralConclusion}
+
+\FrameChaptersInToc
+\Annexes
+\include{Chapitres/publications}
+\include{Chapitres/AnnexeB}
+%\Annex{-------\label{annex:a}}
+%\input{}
+
+%-------------------------------------------------------------------
+%                         Le glossaire
+%-------------------------------------------------------------------
+%\BeginGloWith{Voici un glossaire tout-\`a-fait fictif,
+              %introduit par un texte sur toute la largeur
+
+\begin{TheGlossary}%http://ewus.de/node/132
+\glsresetall
+\printglossary[type=\acronymtype,style=long,title=]
+%\glsaddall
+\end{TheGlossary}
+
+%\BeginGloWith{Voici un glossaire tout-\`a-fait fictif,
+              %introduit par un texte sur toute la largeur
+              %des deux colonnes.}
+%\twocolumn
+
+%\begin{TheGlossary}
+
+
+%\glsaddall
+%\item \textbf{Localisation allocentrique} : Syst{\`e}me de localisation spatial
+%  dont les mesures sont ind{\'e}pendantes du sujet
+
+%\item \textbf{Amer} : Un amer se caract{\'e}rise sous la forme d'une propri{\'e}t{\'e}
+%  stable de l'environnement pouvant servir de r{\'e}p{\`e}re lors de la
+%  navigation. Par exemple, une lumi{\`e}re fixe, un objet fixe, ...
+
+%\end{TheGlossary}
+%-------------------------------------------------------------------
+%              L'index (toujours sur deux colonnes)
+%-------------------------------------------------------------------
+\BeginIndWith{Voici un index}
+\PrintIndex
+%\include{Chapitres/}
+%-------------------------------------------------------------------
+%                       La bibliographie
+%-------------------------------------------------------------------
+
+% La bibliographie (comme d'habitude)
+\onecolumn
+%\cite{*}
+{\footnotesize
+\bibliographystyle{apalike}
+\bibliography{ref}}
+
+%\NumberAbstractPages
+\begin{ThesisAbstract}
+  \begin{FrenchAbstract}
+    \input{Abstract}
+  \end{FrenchAbstract}
+  \begin{EnglishAbstract}
+    \input{AbstractEnglish}
+  \end{EnglishAbstract}
+\end{ThesisAbstract}
+\end{document}
+
+
+
+

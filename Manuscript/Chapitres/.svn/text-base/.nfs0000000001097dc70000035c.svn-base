@@ -1,0 +1,275 @@
+\DontNumberThisInToc
+\DontFrameThisInToc
+\glsresetall
+\ChapterNoNumberCitation{Sélection de l'action emergeant de la topology intrinsèque}{Yes I can}{}{10cm}
+\section{Introduction}
+%%
+ Le colliculus supérieur est une structure multimodale de tronc cérébral impliquée dans plusieurs fonctions cérébrales complexes. Il est impliqué dans le processus fondamental de l'oculomotricité qui a été intensivement étudié électrophysiologiquement et comportementalement. Plusieurs modèles complexes et interprétations fonctionnelles sans réussir à convenir sur un consensus clair au sujet des observations les plus fondamentales aussi bien au niveau électrophysiologique qu'au niveau comportemental. 
+%%%
+Les couches intermédiaires et plus profondes du colliculus supérieur [\gls{sc}] sont impliquées dans la génération de saccades oculaires en réponse à un stimulus visuel. Puisque beaucoup d'aires corticaux et structures sous-corticales projettent vers ces couches [mai 2006], de nombreux flux d'activité neuronale convergent vers \gls{sc}. En conséquence, plusieurs modèles du \gls{sc} ont été proposé \cite{VanGisbergen:1985, Droulez:1991, Arai:1994, Breznen:1997, Lefevre:1998, Gancarz:1999, 2001:Court, Trappenberg:2001, Badler:2002, Goossens:2006, Nakahara:2008, Marino:2008, Trappenberg:2012} pour simuler numériquement plusieurs caractéristiques du comportement visuo-moteur et de ses circuits neuronaux fondamentaux. La plupart de ces modèles ont été conçus pour aborder des questions spécifiques et jusqu'au aujourd'hui il reste très difficile d'avoir une vision synthétique qui caractérise la contribution de \gls{sc} à la génération des saccades visuelles. Dans le meilleur des cas, un modèle complet  comprenant tous ces mécanismes pourrait entièrement expliquer comment cette structure contribue à la génération des saccades mais l'unification peut être hors de portée parce que la plupart de ces modèles ne sont pas compatibles les uns avec les autres. Ils sont fondés sur différentes hypothèses liées à l'architecture, aux afférences ou aux caractéristiques fonctionnelles pour expliquer les mêmes phénomènes.\\
+
+Dans ce travail, nous avons décidé d'identifier les caractéristiques communes à tous ces modèles pour établir notre modèle. Ces caractéristiques bien-admises sont la représentation log-polaire de la surface rétinienne dans les couches profondes de \gls{sc} \cite{Ottes:1986}, le profil de connectivité latérale dans \gls{sc} et la dynamique de l'activité de neurones de Sc. Le modèle en résultant est inévitablement plus simple que l'autre models and proposé un peut par conséquent s'attendre à une puissance fortement diminuée d'explication et de prévision. Cependant, après la confrontation de nos simulations modèles contre des données expérimentales, nous avons découvert les propriétés prévisionnelles en dynamique de la population intérieure qui pourrait expliquer la représentation décrite dans des études comportementales. \\
+
+Nous avons choisi de mettre en application un modèle minimaliste du colliculus supérieur, prenant en considération juste les propriétés de base bien reconnues, au sujet de la transformation visuomotrice et de la connectivité latérale. Nous rapportons un grand ensemble de résultats que nous avons pu reproduire et qui ont été souvent exploités pour valider des modèles beaucoup plus complexes d'explication. Nous réclamons ici que des hypothèses plus simples sont suffisantes pour expliquer ces résultats et que plus de propriétés que nous croyons émergent simplement des caractéristiques locales et bien connues.\\
+\section{Méthodes}
+
+
+Nous avons simulé numériquement un modèle de réseau de neurones de deux couches topologiquement organisées en utilisant le formalisme de \textit{champs neuronaux dynamiques} [\gls{dnf}] décrit dans le premier chapitre \cite{Amari1977}. La première couche correspond à la rétine et la deuxième couche à sa projection log-polaire sur le colliculus supérieur profond . Comme expliqué dans l'introduction, le modèle a été établi seulement sur la base des hypothèses communes à d'autres modèles de \gls{sc}:\\
+
+\begin{itemize}
+
+\item[$\bullet$] Un stimulus physique (une cible) correspond à une petite activation gaussienne sur une surface plane qui néglige la déformation géométrique due à la courbure du globe oculaire. Cette surface correspond à la rétine du modèle. Elle est réduite à une couche de photorécepteurs et nous considérons que le niveau de l'activation de ces récepteurs est proportionnel à l'intensité de la lumière.\\% ? ? ? Référence
+
+\item[$\bullet$] On assume que le lieu de l'activation sur \gls{sc} code l'emplacement de la cible dans le champ visuel et que cette activation est à l'origine de la saccade qui apportera l'image de la cible sur la fovéa (fovéation). Deux activations voisines dans la couche \gls{sc} correspondent aux localisations de cibles voisines dans le champ visuel (code topographique) \cite{Schiller:1972, Wurtz:1972}.\\
+
+\item[$\bullet$] La projection du champ visuel sur la surface colliculaire est basée sur le modèle quantitatif de \cite{Ottes:1986} qui propose qu'une fonction de cartographie logarithmique assure la transformation des coordonnées rétiniennes en coordonnées colliculaires. Nous supposons également que le stimulus entier est projeté sur le \gls{sc} et non pas seulement le centre.\\% comme dans beaucoup de modèles. ? ? ? Référence
+
+\item[$\bullet$] Nous considérons le colliculus supérieur comme étant une carte homogène et uniforme d'unités neurales \cite{Trappenberg:2001,Droulez:1991}. En plus de ses afférences rétiniennes excitatrices, d'autres entrées excitatrices et inhibitrices latérales qui dépendent de la distance entre les neurones sont considérées, comme proposé dans beaucoup de modèles \cite{Arai:1994, Droulez:1991, Gancarz:1999, Lefevre:1992, Optican:1995, 2001:Court, Trappenberg:2001, Nakahara:2008}.\\
+
+\item[$\bullet$] Les influences des aires corticales, des ganglions de la base et du cervelet sur l'activité colliculaire ne sont pas considérées ici.\\
+\end{itemize}
+
+\paragraph{L'entrée rétinienne}
+
+Le hémichamp visuel $V$ $[0^\circ,90^\circ]\times[-90^\circ,90^\circ]$ est tracé sur l'espace continue $R$ $[0,1]\times[-1,1]$ correspondant à la moitié d'une rétine. N'importe quel stimulus $S$ présenté dans $V$ aux coordonnées polaires $(\rho_s,\phi_s)$ (en degrés) est tracé sur $R$ aux coordonnées cartésiennes $(u_s, v_s)$. Nous avons considéré des stimuli ronds avec une distribution gaussienne de la luminosité tels que l'activité $U_r (u, v)$ en un point $(u, v)$ de $R$ en présence d'un stimulus S est donnée par l'équation suivante :
+
+\begin{align}
+  U_r(u,v)= C~exp\left(-\frac{\vert u - u_s\vert^2 + \vert v - v_s \vert^2}{2{\sigma_c}^2}\right)
+\end{align}
+
+avec $(u_s, v_s)$ est le centre de la projection du stimulus sur la carte R, $\sigma_c$ est la taille angulaire du stimulus et $C$ est l'activation maximale dans $R$ (correspondant à l'intensité maximale du stimulus). Sauf indication contraire, les stimulus sont considérés ayant approximativement ayant un diamètre angulaire de 1° dans la rétine, qui correspond à $\sigma_c=1/90$.
+
+\paragraph{La projection visuelle sur le colliculus supérieur profond }
+
+Selon la description de \cite{Robinson:1972}, la projection de $R$ sur \gls{sc} est rapprochée en utilisant une transformation log-polaire, qui réduit le modèle de \gls{sc} à une carte bi-dimensionnelle. Une approximation mathématique de cette transformation a été proposée par \cite{Ottes:1986}.Il s'agit de la projection standard utilisée dans la plupart des modèles computationnels du colliculus \cite{Optican:1995, Trappenberg:2001, Nakahara:2009} :
+
+\begin{align}
+  x &=
+  B_x~log\left(\frac{\sqrt{\rho^{2}+2A\rho|\cos{(\phi)}|+A^{2}}}{A}\right) \notag \\
+  y &=
+  B_y~arctan\left(\frac{\rho \sin{(\phi)}}{\rho|\cos{(\phi)}|+A}\right)
+  \label{eq:mapping}
+\end{align}
+
+où $(x,y)$ représente les coordonnées cartésiennes dans \gls{sc} (en millimètre), $(\rho,\phi)$ les coordonnées polaires dans $R$ (en degrés). $Bx$ (en millimètres) est une constante déterminant la taille de la carte colliculaire le long de l'axe horizontal. $By$ (en millimètres) est une constante déterminant la taille de la carte colliculaire le long de l'axe vertical. $A$ (en degrés) est une constante qui (avec le rapport $Bx/By$) détermine la forme de la carte. Un stimulus à $\rho=90°$ et à $\phi=-90°$ active une cellule à $x=4,8mm$ (correspondant à la longueur d'un colliculus) et à $y=-2,76mm$ (correspondant à la moitié de sa largeur) \cite{Ottes et autres, 1986}. Cette transformation log-polaire amplifie la représentation de la région fovéale \ref{}.
+\begin{figure}
+\begin{tabular}{|c|c|}
+\hline
+A\includegraphics[width=.5\textwidth]{Pics/mapping-3} & B\includegraphics[width=.5\textwidth]{Pics/weights-profile}\\
+\hline
+C\includegraphics[width=.5\textwidth]{Pics/topology}& D\includegraphics[width=.5\textwidth]{Pics/single-stimulus}\\
+\hline
+\end{tabular}
+  \caption{
+Description du modèle. A. Mapping des coordonnées polaires dans l'espace visuel en coordonnées cartésiennes dans \protect\gls{sc}. La projection rétinotopique modifie les propriétés géométriques de l'image tout en gardant les relations de voisinage. \protect\`A gauche, le hémichamp visuel droit (lignes des iso-directions et des demi-cercles d'excentricité constante). \protect\`A droite la carte représentant le colliculus avec des lignes d'iso-amplitudes de \protect\gls{sc} $(2° à 90°)$ et des lignes d'iso-directions $(- 90° à 90°)$ sont indiquées. Les coordonnées polaires visuelles $(\protect\rho, \protect\phi)$ sont transformées en coordonnées colliculaires cartesiennes $(x, y)$ en utilisant les équations \protect\ref{eq:mapping}. Les lignes colorées illustrent la magnification de la représentation des stimuli dans la région fovéale. B. Le pattern des connexions intracolliculaires (noires) résultant de la différence entre une fonction excitatrice locale (bleue) et une fonction inhibitrice globale (rouge). C. Relation topologique entre la surface rétiniènne isotropique (rouge), les projections colliculaire anisotropiques correspondant à la présentation d'un stimulus dans le champ visuel (pourpre) et la connectivité latérale isotropique (bleue) dans le colliculus supérieur. D. La projection d'un stimulus visuel gaussien (situé à (2°,0°)). Au milieu, la projection d'entrée à la carte colliculaire. \protect\`A droite l'activité du colliculus supérieur enregistrée après stabilisation de son activité.
+}
+  \label{fig:mapping}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\paragraph{Carte computationnelle du colliculus}
+
+\gls{sc} a été modélisé en utilisant la théorie des champs neuranaux dynamiques \cite{Amari 1977, Taylor 1999} qui considère un volume cortical donné Ω de comme étant un continuum spatial. Quoique cette théorie a été proposé pour simuler principalement des activités dans le cortex cérébral, nous avons assumé qu la densité neurale dans \gls{sc} est assez élevée pour nous permettre de transposer cette théorie au \gls{sc}, comme supposé dans plusieurs autres modèles \cite{Trappenberg:2001, Schneider:2002, Trappenberg:2012}. Le formalisme de \gls{dnf} propose que la population des unités neurales actives peut être décrite comme un champ continu d'activité. Les unités neurales, comme éléments de la carte, peuvent être considérées comme un ensemble de processeurs homogènes fonctionnant en parallèle sur les signaux entrants. Le dynamique du champ est régi par une équation du type :
+
+\begin{align*}
+	\frac{1}{\tau} \frac{\partial u({\bf \vec{z}},t)}{\partial t}
+	 = - u({\bf \vec{z}},t)
+ 	 + \int_{\Omega}^{} w({\bf \vec{z}},{\bf \vec{z'}})f(u({\bf \vec{z'}}, t - \frac{|{\bf \vec{z}-\vec{z'}}|}{v}))d{\bf \vec{z'}}
+     + i({\bf \vec{z}},t) 
+\end{align*}
+
+
+avec  $u(\vec{z}, t)$ représente l'activité (le potentiel moyen de membrane) à la position $\vec{z}$ à l'instant $t$, $I(⃑\vec{z},t)$ représente l'entrée synaptique reçue à l'instant $t$ et à la position $\vec{z}$, $W$ est une fonction de poids décrivant la force de la connexion entre une unité neurale à la position $\vec{z}$ et une unité différente à la position $\vec{z'}$, f est la fonction de fréquence de décharge d'une unité neurale simple, $v$ est la vitesse de conduction d'un potentiel d'action et $\tau$ est une constante de temps caractéristique de l'activation des neurones. \'Etant donnée la petite taille du colliculus , la vitesse de conduction a été négligée $(v=+\Infinity)$ et le champ de l'activité colliculaire a été considéré comme homogène et isotrope, ce qui mène à l'équation simplifiée suivante :
+%1/τ (∂u (⃑ de z, t))/∂t=-u (⃑ de z, t)+∫_SC▒w (|^ de ⃑-z ⃑ de z ' |) f (u (⃑ de z, t)) DZ ⃑'+i (⃑ de z, t)    (5)
+\begin{align}
+  \label{eq:neural_field}
+	\frac{1}{\tau} \frac{\partial u({\bf \vec{z}},t)}{\partial t}
+	 = - u({\bf \vec{z}},t)
+ 	 + \int_{\Omega}^{} w(|{\bf \vec{z}}-{\bf \vec{z'}}|)f(u({\bf\vec{z'}}, t))d{\bf \vec{z'}}
+     + i({\bf \vec{z}},t)
+\end{align}
+%Pour la fonction f de cadence de tir, nous avons employé une fonction simple f (u)=min de rectification (maximum (u, 1), 0) puisque c'est la fonction la plus simple qui peut fournir la stabilité pour un tel champ [salines et abbé 1996].
+%La densité des unités neurales dans le \gls{sc} est considérée constante dans tout la surface entière et nous considérons comme étant la force des connexions excitatoires et inhibitrices une fonction de la distance entre les cellules mesurées sur la surface de \gls{sc} [c.-à-d., =w de W (⃑ de z, ⃑'de z) (|^ de ⃑-z ⃑ de z ' |)]. Le noyau latéral d'une cellule donnée est ainsi isotrope (les Cf figurent 1C), contraire [Nakahara et autres, 2009] où des connexions sont basées sur la proximité de stimulus. Vu deux cellules au ⃑ respectif des positions z et au ⃑'de z, la force en résultant des connexions est définiepar=Eexp de W (⃑ de z, ⃑'de z) (-|⃑-z ⃑ de z|^2/(σ_e^2)) - Iexp (-|⃑-z ⃑ de z|^2/(σ_i^2))    (6)avec E, I étant les amplitudes, Se, SI, étant les désaccords des fonctions gaussiennes excitatoires et inhibitrices. Bien que l'origine des connexions inhibitrices excitatoires et à longue portée à courte portée soit encore discutée (des Cf la section pour une interprétation), notre premier consideredsi≫se de simulations en tant que dedans ? ? ? [REFS]. Les effets de l'inactivation locale dans le \gls{sc} ont été simulés numériquement en multipliant la matrice u d'activation résultant de l'équation (eq5) par une matrice binaire L de masque dans laquelle un état est attribué à chaque unité (1 pour une unité d'active et 0 pour inactivée). Dans les expériences, le modèle de lésion que nous employons est une matrice avec un disque uniforme des valeurs nulles.
+
+%Plan de décodage :
+
+%Comme passé en revue dedans [Gandhi et Katnani 2011], on a proposé plusieurs manières de décoder l'activité de Sc. Dans notre modèle, le vecteur statique faisant la moyenne et addition statique de vecteur peut être unifié puisque l'activité de \gls{sc} est stéréotypée (voir la prochaine section). Sauf indication contraire, le ⃗ désiré de ∆E de déplacement d'oeil est décodé utilisant un vecteur statique faisant la moyenne de la procédure :
+
+%∆E ⃗= de〗 de ⃗ de r_z de 〖de ∑▒ (() R_z)/(∑▒r_z)    (7)
+
+%le wherer_z est la cadence de tir moyenne de la cellule à un ⃑ de la position z et le ⃗ (de R_z) est le vecteur préféré codé par cette cellule.
+
+
+%Paramètre    Valeur    Paramètre    ValeurTaille de rétine    512x256    ∂t    10msTaille de Collicular    64x64    τ    100msE, σe    1,50, 0,10    A    3°I, σi    0,75, 1,0    Bx    1.4mmC, σc    1,00, 1/90    Par    1.8mmTableau 1 : Paramètres de simulation
+
+%\section{Résultats}
+
+%codage de population :
+
+%Nous avons étudié l'ampleur de la population active dans le \gls{sc} qui a résulté d'un stimulus identique présenté à différents emplacements du champ visuel. L'entrée à la carte collicular est différente pour chaque stimulus en raison de la déformation logarithmique (cf. chiffre 1C et 1D). En raison de la transformation non linéaire de la carte rétinienne sur la carte de Sc, stimulus apparaissant dans le champ visuel central activez au commencement une plus grande population des unités neurales de \gls{sc} que des stimulus plus périphériques. Cependant, en raison du modèle de la connectivité latérale, après plusieurs cycles de calcul, la distribution du collicularactivity atteint un état stable avec la même ampleur (stéréotypée) de la population active, sans se soucier l'excentricité de la cible dans le champ visuel. 
+%Champs récepteurs :
+
+%Puis, nous avons examiné la réponse des unités neurales situées à différents emplacements dans la carte de \gls{sc} en réponse aux stimulus présentés à différentes excentricités dans la carte de V. Figure 2shows que la gamme des excentricités de cible pour lesquelles une unité neurale est en activité (champ réceptif) dépend de l'emplacement de l'unité de la carte de Sc. Les champs en forme de cloche de réponse sont quelque peu asymétriques ; la décharge diminue des deux côtés d'une excentricité préférée et disparaît pour des saccades vers les emplacements qui sont loin de l'excentricité préférée. D'ailleurs, plus l'emplacement préféré est excentrique, plus la courbe de accord est grande.
+
+%Exactitude :
+
+%Utilisant le plan de établissement d'une moyenne de décodage (eq7), nous avons examiné l'exactitude du modèle en codant l'emplacement des cibles présentées à de divers emplacements dans le champ visuel. La figure 3A représente, dans l'ensemble la surface collicular, les emplacements réels des stimulus de point (symboles ouverts) et leur image sur le \gls{sc} (symboles remplis). Malgré la transformation rondin-polaire de la carte rétinienne et le codage distribué de n'importe quelle localisation d'objectifs par une population des unités de Sc, le modèle a montré l'exactitude assez bonne. Quand des stimulus ont été présentés dans le domaine parafovéal, leur codage dans le \gls{sc} était décentré vers des emplacements périphériques dans le champ visuel, tandis que la polarisation était vers la fovéa quand les mêmes stimulus ont été présentés dans le domaine périphérique. Les disparités de position sont également plus fréquentes sur les bords du Sc, c.-à-d. aux collicularregions codant des cibles sur la fovéa ou sur le méridien vertical.
+
+%Temps de réponse :
+
+%Nous avons étudié l'effet de la taille et de l'intensité du stimulus rétinien sur la réponse collicular. Figure4shows que l'heure d'atteindre l'activation maximale dépend de l'excentricité de stimulus (&B) de panneaux A, taille (panneaux C et D) et intensité (panneaux E et F). Pour ce qui concerne l'influence de la taille de stimulus, l'ampleur de la population des unités neurales actives augmente au commencement avec la taille de cible. Mais cette première activation devient limitée par la connectivité latérale et atteint un état stable (activation stéréotypée). La croissance de l'activité dure plus longtemps car la population au commencement excitée (et par conséquent le stimulus) est plus petit, observé sur le schéma 4 (panneaux C et D). De même, un stimulus plus intense atteint le profil standard d'activation plus rapidement (panneaux E et F).
+
+%Interactions spatiales entre les stimulus :
+
+%Quand deux (ou plus) stimulus sont présentés sur la rétine, ils activent au commencement plusieurs emplacements sur la carte de Sc. Cependant, après que la carte atteigne un état stable, seulement une population des unités neurales actives reste active. Figure5shows la réponse de notre modèle à la présentation de deux petits stimulus identiques (même taille, intensité et forme) situés à différents emplacements (3 et 10°). Le panneau moyen prouve que la population activée par le stimulus proximal est au commencement plus grande que la population activée par la plus distale. Plus tard (panneau droit), l'activité dans le \gls{sc} profond est une population stable située dans la position moins excentrique. Le stimulus plus fovéal a été choisi et l'autre a été empêché.
+
+%Effet de latence :
+
+%On peut également observer un effet de latence ralentissant le processus de sélection pendant la stabilisation de l'activité dans la carte collicular. Nous rapportons un cas intéressant dans figures5B&5C, quand les deux populations actives initiales ont la même taille (parce qu'elles ont la même excentricité), mais pas les mêmes orientent et rivalisent au cas avec un stimulus simple dans un de ces emplacements. L'activité de \gls{sc} montre différents cours de temps quand un stimulus simple est présenté contre quand il est accompagné avec un stimulus identique à un emplacement symétrique (voir les courbes projetées dans figure5B&5C).
+
+%Interactions spatiales avec des stimulus aux excentricités étroites : 
+%Le comportement de sélection de notre modèle plus profondément a été étudié quand deux stimulus sont présentés à l'excentricité identique mais avec des azimuts opposés. Figure5shows que pour une distance angulaire entre les deux cibles moins que 50°, la population des unités neurales actives dans le \gls{sc} est situé entre les deux sites codant l'emplacement de chaque cible, tandis que pour la distance au delà de 50°, la population est portée sur un des deux emplacements. Cette sélection est faite quand le bruit blanc est ajouté à l'activité.
+%Effet d'inactiver la carte de \gls{sc} :
+
+%Nous avons examiné les effets d'inactiver une petite partie du Sc. Dans la figure 3B, l'inactivation est portée sur un site codant une cible située à (5°, 0°). Quand la réponse du modèle aux stimulus situés à différentes positions est étudiée, nous avons constaté que l'activité de \gls{sc} évoquée par les stimulus moins excentriques (4°, 20°) a décalé vers l'extrémité rostral du \gls{sc} tandis que l'activité évoquée par une cible plus excentrique (9°, - 20°) a décalé vers l'extrémité caudale. En effet, en raison de l'inactivation, la symétrie de la population qui est normalement en activité pour ces localisations d'objectifs est changée. La symétrie de l'organisation annulaire de la connectivité inhibitrice qui des bordures elle est aussi bien changée. La symétrie est rétablie par un décalage d'activité de \gls{sc} à partir du site avec des lésions (figue 3, E, F, G& H). Un stimulus situé à (5°, 0°) active une population concentrée sur le site inactivé. Dans le chiffre 3C, nous montrons l'influence d'une plus grande inactivation utilisant le même stimulus. Certains des saccades qui n'ont pas été affectés avec de petites cibles deviennent inexacts. 
+
+%Discussion :
+
+%Sélection d'une population unique et stéréotypée des unités neurales actives :
+
+%Nous avons rapporté que la carte collicular stabilise sur une population unique et stéréotypée des unités neurales actives. Ce résultat est compatible aux résultats rapportés dedans [Anderson et autres, 1998]. [Gandhi, 11] également évoque ce phénomène et rapporte que, celui qui la position dans la carte collicular, la taille de la population des neurones actifs couvre 28% de la carte avant début de saccade. Dans l'étude théorique de DNF [Amari 1977], on lui a montré que pour n'importe quel signal d'entrée constant, l'ensemble neural stabilisera sur une population unique des unités neurales actives avec une forme stéréotypée, quoi que (constante) entré. C'est dû à l'effet combiné des connexions latérales excitatoires et inhibitrices. L'origine de l'inhibition latérale est encore discutée, correspondant à la connectivité intracollicular latérale ou à l'inhibition nigral [Trappenberg2001] mais dans les deux cas, les modèles conviennent sur son ampleur large. L'inhibition répandue assure une concurrence dans tout l'ensemble neural tandis qu'une certaine activité demeure à une plus grande ampleur que le noyau excitatoire. Les interactions excitatoires plus focalisées entre les unités neurales créent une boucle de réaction positive, où les unités neurales activent un un autre. Cette excitation croissante est limitée dans l'amplitude en raison de la non-linéarité dans la fonction d'activation (mise en application dans la fonction de rectification dans le modèle actuel) et la propagation latérale de l'excitation est limitée par l'anneau de l'inhibition du noyau latéral, les deux effets ayant pour résultat une forme stéréotypée à la population des unités neurales actives.
+
+%Diverse dynamique expliquée :
+
+%La dynamique observée correspond au temps de relaxation de la stimulation initiale de la carte à sa stabilisation dans une population stéréotypée active. Ce temps sera tout les tout plus longs que les états initiaux et finaux de la carte sont plus éloignés. Ceci boîte dépend de plusieurs paramètres : le nombre (discuté ci-dessous) et la taille (ampleur et amplitude spatiales) des stimulations reçues sur la carte, comme signalé dans le schéma 4 pour des tailles changeantes des stimulus, mais également pour les stimulus identiques à différentes excentricités. 
+%Les effets de l'inactivation peuvent également être expliqués sur la base de la dynamique de la population. L'inactivation est une procédure très classique en électrophysiologie et, en particulier, nos résultats assortissent parfaitement les saccades hypometric et hypermètres observés après les injections focales du lidocaïne dedans [Lee et autres 1988]. De l'activation initiale de la population d'a (en partie inactivé) des unités neurales, la dynamique tendra à activer une population de taille stéréotypée, rapportée ci-dessus comme seule manière d'avoir une activité stable. Le schéma 3 prouve que ceci sera obtenu en décalant l'activation à partir du site inactivé, causant une inexactitude dans le saccade suivant. Car il peut observer sur le schéma 3, le décalage se produira dans la direction opposée, selon la partie de la population stimulée qui est inactivée, rapportera les caractéristiques hypometric et hypermètres évoquées ci-dessus. L'effet rapporté dans le chiffre 3B est moins intuitif, puisque nous avons expliqué ci-dessus que, celui que la taille de la stimulation, il ait comme conséquence une population active stéréotypée, tandis que le chiffre 3B prouve que l'inexactitude provoquée par une inactivation locale dépend de la taille du stimulus. Puisque le décalage de l'activité est produit le long de la dynamique de la population, il peut comprendre que la stimulation initiale (qui dépend de la taille du stimulus) peut modifier le décalage. Considérant dans le chiffre saccades de 3B qui n'ont pas été affectés dans la première simulation (loin du site de lésion), un plus grand stimulus active dans le chiffre 3C une plus grande population en Sc. Alors l'inactivation cause une asymétrie dans l'alimentation dedans de ces stimulus et aide à décaler l'activité à partir du site de lésion. 
+%Effet de la projection logarithmique :
+
+%Comme expliqué ci-dessus, pour les caractéristiques semblables et en raison de la projection logarithmique, une cible moins excentrique enverra l'activation sur une plus grande population qui atteindra par conséquent le profil standard plus rapidement, ayant pour résultat l'augmentation de latence avec l'amplitude de saccade comme montrée par [Goossens et Van Opstal 2006]. La projection logarithmique qui magnifie la région rostral également explique la largeur croissante des champs de réponse rendus compte du schéma 4 et également de leur asymétrie puisque le phénomène est également valide à l'intérieur des champs de réponse. Ces profils d'ajustement d'activité bien avec les propriétés de champ de mouvement décrites des résultats expérimentaux dedans [Munoz et Wurtz, 1995 ; Étincelles, 1976]. Comme signalé dans [étincelles et mai, 1980], débits unitaires chaque collicular au maximum avant un saccade ayant une direction particulière et une amplitude particulière, indépendamment de la position initiale de l'oeil dans l'orbite. D'ailleurs, la décharge alors diminue pour d'autres vecteurs et disparaît pour les saccades vers l'emplacement qui sont loin de l'emplacement préféré. La nature asymétrique des champs de réponse peut également expliquer les petites erreurs dans l'exactitude rendue compte du schéma 4 avec les saccades (resp. courts) trop longs vers les stimulus (resp. caudaux) rostral. Il doit également souligner que ces erreurs sont situées aux bords de la carte de Sc. Quand les deux hemifields visuels sont considérés ces régions en fait sont associées à une activation bilatérale, par des les deux colliculi.
+
+%Interaction entre plusieurs stimulus :
+
+%Plusieurs études ont fourni des données sur l'organisation du chemin saccadé que les sujets suivent quand ils explorent les diverses images visuelles [Yarbus 1967, Noton et 1971 rigide, Lévy-Schoen 1974]. Elles ont prouvé que la valeur attrayante d'un objet dépend fortement de sa distance relativement à l'objet fixé précédent (les distances courtes sont plus fréquentes). D'ailleurs, cette valeur attrayante est plus grande quand le phénomène s'est produit près de la fovéa. Notre modèle produit des réponses semblables quand son entrée est alimentée avec les objets identiques multiples.
+
+%Nous avons expliqué que, en raison de la transformation rondin-polaire, deux stimulus visuels de taille semblable activent deux populations avec les tailles qui dépendent de leur excentricité : De plus grandes populations sont activées quand le stimulus est projeté près de la région Centre que dans des régions plus périphériques (cf. figue 9, panneau moyen). Nous avons également expliqué que les activités intracollicular du champ neural mènent au même plan informatique « tout ou rien », indépendamment de l'emplacement de stimulus. Néanmoins, comme rapporté ci-dessus, cela prendra un plus long temps pour commencer à partir d'une plus petite population active pour atteindre ce profil standard d'activité. Quand deux populations éloignées sont en activité (dans le cas de deux stimulus), elles concurrenceront par leurs connexions inhibitrices à longue portée. La population au commencement plus grande (parce que plus rostral) aura plus de puissance d'empêcher l'autre, de stabiliser sur le profil standard et de gagner la concurrence, comme on l'a expérimentalement observé dans la section 3.
+
+%Le soi-disant effet à distance de distractor a été la première fois rapporté que par [Lévy-Schoen 1969] dans une étude où l'auteur a essayé de découvrir « ordonne » que régissez la sélection d'une cible. Dans cette étude, deux stimulus identiques ont été simultanément présentés à deux emplacements différents afin d'examiner la sélection qui favoriserait un au-dessus de l'autre cible. Nous avons proposé ici que la sélection du stimulus plus fovéal résulte directement de l'effet combiné de la connectivité locale (excitatoire et inhibitrice) dans une carte de \gls{sc} et de la représentation géométrique du champ visuel qui magnifie ses régions fovéales et peri-fovéales. 
+
+%Dynamique temporelle pendant la concurrence :
+
+%Un effet de latence ralentissant le processus de sélection est rapporté dans plusieurs études [Findlay 1983, Weber et Fischer 1994, Godijn et Theeuwes 2002, Honda, 2005] utilisant un grand choix d'installations expérimentales (différents emplacements, différentes synchronisations entre les présentations des deux stimulus). Nous avons reproduit certaines de ces études utilisant le modèle proposé pour étudier le soi-disant effet à distance de latence de distractor. Comme expliqué ci-dessus, la concurrence entre les bulles de l'activité prendra un certain temps avant qu'un de la bulle disparaisse et l'autre peut atteindre le profil stéréotypé. Le schéma 5 montre les étapes principales de la concurrence qui pourrait expliquer la latence induite par la présence d'un distractor.
+
+%Un cas plus difficile plus complètement a été étudié sur le schéma 5, quand les deux stimulus sont à la même excentricité et activent le même nombre d'unités neurales. Pendant les premiers 25ms qui suivent la présentation des stimulus, les deux emplacements correspondants dans la carte de \gls{sc} sont habilités à la sélection et chaque groupe d'unités neurales actives tend à empêcher l'autre groupe par les connexions inhibitrices à longue portée. Cette concurrence pourrait théoriquement des bouts pour toujours si le système étaient parfaitement symétrique et silencieux. Puisque nous appliquons un bruit blanc aléatoire au niveau de la rétine, le système perturbe la symétrie et les faveurs une des deux emplacements, menant à la sélection finale.
+
+%Dans ce cas, avec une distance angulaire entre les stimulus de 90°, on l'a expliqué que les connexions inhibitrices à longue portée effectuent une concurrence et choisissent un de la cible. Dans une étude plus systématique, on lui montre sur le schéma 5 que pour des distances angulaires plus courtes (la limite étant évalué ici à 50°), la population active en résultant est situé au milieu des deux emplacements. Le soi-disant effet global a été d'abord rapporté dedans [Coren et Hoenig 1972] pour les saccades volontaires et plus récemment plus tard confirmé pour tous les saccades cible-obtenus [Deubel et autres 1984, Findlay 1982] et pour des distractors [der Stigchel et autres 2011]. Si deux stimulus sont présentés aux emplacements dans l'espace étroits, le saccade en résultant semble débarquer sur un emplacement intermédiaire, fortement corrélé avec l'au centre de la masse des deux emplacements de stimulus. Quand les populations au commencement excitées sont étroites, non seulement les inhibiteurs à longue portée mais également les connexions excitatoires à courte portée vont agir l'un sur l'autre. Le processus excitatoire a un effet constructif qui pourra établir une bulle d'activité où les bulles se réunissent (le plus probablement à leur au centre de la masse), qui auront comme conséquence une nouvelle activité, s'élevant jusqu'au profil standard et au déclenchement de saccade. Ces résultats au sujet de l'effet global sont intéressants parce qu'il n'y a aucun besoin d'assumer l'existence des mécanismes choisissant une des deux cibles puisque la sélection de cible est simplement un sous-produit de la connectivité latérale. 
+
+%En conclusion, la plupart des propriétés du colliculus supérieur peuvent être expliquées en termes d'émergence résultant d'une dynamique complexe entre les neurones du Sc. Ceci dessine deux conséquences. D'abord, le modèle proposé peut représenter une base solide pour les travaux futurs qui visent à modeler la boucle de Visio-moteur. En second lieu, ce modèle suggère clairement que la plupart des expériences mesurent réellement très les mêmes propriétés de bas niveau qui peuvent différer seulement dans leurs expressions comportementales.
+
+
+
+%Le schéma 2. champs récepteurs. Selectedneuronresponse à un varyingfrom 1◦ d'emplacements de thatissuccessivelypresentedat de stimulus jusqu'à 25◦. Pour chacun des quatre neurones (locatedrespectivelyat 2.5◦, 5◦, 10◦and 15◦eccentricitywithazimuth 0), le taux de décharge a été recordedafter que le modèle a atteint le seuil de saccade. L'acuité du receptivefieldsdecreaseswith la distance de la fovéa. Dottedlinesindicate la quantité de site de receivedateach d'excitation.
+
+%Le schéma 3. exactitude et effet de codage de la lésion sur l'activité collicular. L'exactitude du modèle measuredusing un ensemble d'emplacements targetsatdifferent qui sequentiallypresented au modèle. Pour l'eachtarget l'au centre de la masse du collicularactivity a été décodé et représenté comme un circlewhile noir la position d'actualtarget isrepresented comme une petite lésion circulaire blanche de circle.A.Intact model.B.A a été exécutée à la position (5°, 0°). La lésion circulaire moyenne de C.A a été exécutée à la position (5°, 0°). La lésion circulaire moyenne de D.A a été exécutée à la position (5°, 30°). E.Effect de l'inactivation d'une correction localisée dans le stepsthatresult superiorcolliculusatdifferent de temps dans une dérive de l'activityawayfrom le site avec des lésions. Afterlesion de F.5ms. Afterlesion de G.25ms. Afterlesion de H.100ms.
+
+%Figure 4.Influence d'excentricité, de taille et de grandeur de stimulus le temps de réponse. Le stimulus d'A& B.A a été présenté à l'excentricité différente et le taux de décharge a été enregistré sans interruption jusqu'à ce qu'il atteigne la valeur maximale. Le temps de réponse a été enregistré quand le taux de décharge croise le treshold de saccade. Le temps de C et de D.Response a été enregistré pour la taille différente de stimulus relativement au diamètre nominal (1/90°) E et le temps de F.Response a été enregistré pour la grandeur différente de stimulus relativement à la grandeur nominale (1).
+
+%Le schéma 5. Distractor et position de cible globale d'effect.A.Decoded sur le \gls{sc} après 500ms de la simulation quand la distance relative entre les deux stimulus est augmentée. Autour d'une distance relative de 50°, une sélection se produit sur une de l'evaolution de deux stimuli.B.Temporal d'une tranche de \gls{sc} quand un stimulus simple est évolution de presented.C.Temporal d'une tranche de \gls{sc} montrant la fusion de l'activité au centre des deux cibles (aucune sélection). L'évolution de D.Temporal d'une tranche de \gls{sc} après une sélection s'est produite sur l'activité supérieure de stimulus.E.Final dans le \gls{sc} où la cible codée correspond au centre des deux stimulus (la distance relative entre les stimulus est 50°). L'activité de F.Final dans le \gls{sc} où la cible codée est le stimulus supérieur (distance relative entre les cibles est 60°).
+
+\section{Les modèles du colliculus }
+%In 1986, Ottes et al. proposed a model of the structure of collicular neural maps and of the shape of collicular visuomotor fields, based on the initial mapping
+experimentally obtained by Robinson (1972) with monkeys. The mapping be-
+tween the position of a stimulus in the retina and the location of activated cells
+in the \gls{sc} is based on logarithmic a function (Fig. 6) and the mapping between
+this location and the corresponding saccade vector is defined as the inverse
+function. The activity profile generated in the \gls{sc} map by a stimulus is defined
+as a 2D Gaussian function of constant size, mapped in physical coordinates on
+the collicular surface. The combination of these mappings and activity profiles
+accurately simulates the increase of the visual and motor fields size with the
+distance to retina center and the skewness of their sensitivity profile.
+This quantification of mapping of the visual space onto the physical surface
+of the colliculus was essential to further proceed with quantitative modelling
+of the working superior colliculus. As a consequence, it was extensively used
+in subsequent studies.
+
+
+One of the most discussed points was how to compute the superior colliculus output. Since the amplitude and direction of a saccade depend on the activity of the neurons population in the deep \gls{sc} \cite {Sparks1990}, different ways of \gls{sc} output evaluation were proposed :\\
+  -winner-take-all: the most active site indicates the direction\\
+  -summation\cite{McIlwain1976,Sparks1976}:all activities of active neurons are summed with weights determined by their individual labels\\
+  -weighted average \cite{Lee1988,Groh1997}:normalization according to the number of active neurons\\
+These 3 evaluation modes are equivalent in the case of a normally activated population but differs when there is a deactivation or an over-activation.
+
+Another discussed point concerns the movement of neural activity in the superior colliculus motor map during gaze shift. Based on experiments in the cat, it has been supposed that saccades are initiated by a hill of activity at the caudal appropriate site. Then as the saccade evolves (the eye moves), the distance to the target decreases  and the hill moves rostrally to reach the most rostral zone called "fixation zone". This suggestion has been also posited for the monkey and supposed that the hill is transported via the neurons called BUN. However some studies are trying to prove the evidence against the existence of this moving hill in the monkey superior colliculus during saccades \cite{Robijanto2002}.
+
+In the following subsections two models are quickly presented and then we will focus on our model. The first model is an ensemble-coding scheme of the midbrain superior colliculus that was proposed by A.J. van Opstal and H.H.L.M.Goossens in 2008. Understanding this model bases was a first step in my work, trying to get used with the vocabulary and the hypothesis.
+
+
+The neurons of the deep layers of the superior colliculus were classified into 3 types: fixation, build-up and burst, based on some criteria previously described in  \cite {Goldberg1972,Munoz1993a,Dorris1997,Munoz1995a}. The depth of the dorsal surface of the superior colliculus was determined by the depth at which there is the beginning of an activity.
+\begin{itemize}
+\item To be classified as a fixation neuron (FN), the neuron must be located at 1 to 3 mm below the dorsal surface of the rostral pole and has the following characteristics: (1) tonic activity$>10$ spikes / sec during visual fixation, and (2) a cessation of activity (pause) during all ipsiversive saccades and most contraversive saccades \cite{Munoz1993a}.
+
+\item To be classified as a build-up (BUN), a neuron must be located at 1-3 mm below the dorsal surface of the superior colliculus and possess these discharge characteristics : (1) begins to discharge at a low frequency signal after the onset of the saccade (2) continues to discharge until the saccade ends \cite{Munoz1995a,Dorris1997}.
+
+\item To be classified as a burst (BN), a neuron must be located at 1-3 mm below the dorsal surface of the superior colliculus, and has the following discharge characteristics : (1) discharges at high frequency just before the beginning of the saccade (2) reduces its activity between the saccade onset and the Saccade end. So it has a major peak of activity.
+\end{itemize}
+This classification remains a hypothesis for some models of saccade control, but some researchers opt instead for a single population of collicular cells that changes its behavior based on external parameters and experimental conditions. It has been argued that there is a continuum between fixation neurons and other neurons (called also "saccade neurons") because there are many fixation neurons that also have movement fields\cite{Munoz1995a}.
+
+%\subsubsection{ "Linear ensemble-coding in the midbrain superior colliculus specifies the saccade kinematics"}\cite {Goossens2008}
+
+%In this scheme, during a saccade the planned saccade trajectory results from an instantaneous linear summation of all neurons activity vectors across the motor map. The model assumed that the shape and the size of the active population is invariant for all saccades and can be described by a Gaussian profile with a fixed width and a peak mean firing rate. This recent model is based on a mathematical formulation and produces satisfactory results but it doesn't help to understand the superior colliculus structure and the possible connections included in the gaze control. It imposes some properties that are supposed to be emergent functions, that is why a neural network modeling seems to be more appropriate.
+
+%\subsubsection{ "Model of integrations among three saccade related cell types"}
+%\cite{Wurtz1994}
+%Wurtz and Optican have proposed a model of the \gls{sc} organized into vertical modules that span the so-called burst and build-up neurons as shown in the fig:\ref{model2}. Neurons on the rostral so-called fixation zone (F) receive a command to fixate (Fix) and inhibit the other modules. Build-up (BU) neurons receive cortical inputs (In) at a locus on the \gls{sc} motor map corresponding to the desired eye displacement. Burst (B) neurons act as a winner-take-all network that selects the desired ocular displacement, $\Delta$, the locus of peak activity among the build-up (BU) neurons. They act as the resettable integrator of the local feedback loop, providing $\Delta$'. Thick arrows in the figure correspond to excitatory (light gray) and inhibitory (dark gray) connections.
+%%
+%%\begin{figure}
+%%\begin{center}
+%%\includegraphics[width=15cm,height=10cm]{../figures/model.jpeg}
+%%\end{center}
+%%\caption{Model of integrations among three saccade related cell types in the intermediate layer of the superior colliculus}
+%%\label{model2}
+%%\end{figure}
+
+%This model was discussed during MAPS meetings. The general conclusion was to reject the separation between different kinds of neurons and to focus on a model based on a uniform population of neurons.
+
+
+\subsection{Intégration sensorimotrice}
+
+%Le colliculus supérieur agit comme un site d'intégration sensorimotrice, en recevant, entre-autres, des entrées somato-sensorielles, auditives, ainsi que des signaux visuels\cite{Nolte1993}. Ses entrées visuelles arrivent, soit directement de la rétine, soit par l'intermédiaire du cortex (modulés par l'intervention d'autres structures), pour fournir en sortie des prévisions des déplacements désirés à transmettre aux muscles extra-oculaire via les neurones moteurs\cite{Wurtz1996,Nolte1993}. ***********************MAURO URSINO, CRISTIANO CUPPINI, ELISA MAGOSSO, ANDREA SERINO AND GIUSEPPE DI PELLEGRINO. Multisensory integration in the superior colliculus: a neural network model.b (2008)
+%************************
+%\subsection{Structure du colliculus supérieur: Premier modèle d'intégration sensorimotrice}
+
+%Une des principales caractéristiques de colliculus supérieur est son organisation en couches. La couche superficielle du colliculus supérieur est une couche "visuelle" qui reçoit des informations directement des cellules ganglionnaires de la rétine. Chaque site de cette couche s'active de façon optimale par un stimulus présent en un point particulier du champ visuel. De son côté, la couche profonde forme une carte "motrice" topographiquement organisée : les vecteurs de la saccade résultante d'un stimulus visuel varient la position du stimulus. La correspondance entre les deux cartes fait penser à un mécanisme simple pour guider les yeux: un stimulus visuel projeté sur la rétine entraine l'activation de la carte visuelle qui excite directement la carte motrice qui à son tour prépare l'ordre moteur permettant le déplacement désiré.
+
+%Ce modèle simple a été proposé dès 1970 suite à la découverte des cartes colliculaires. Une de ses hypothèses principales est l'existence d'une connexion point par point entre la couche superficielle et la couche profonde. A l'époque, il était difficile de prouver l'existence des ces connexions et en plus il a été montré que les saccades n'exigent pas l'existence d'un stimulus visuel (saccades spontanées dans l'obscurité). Par la suite, ce modèle a été restreint aux saccades reflex à très courte latence (saccades express) après avoir montré l'existence d'une connexion anatomique directe. Et pour les saccades à plus grande latence, les chercheurs se sont dirigés vers des modèles qui intègrent des voies indirectes en passant par le cortex, le thalamus, le cervelet...    \cite{Wurtz1996,Neurosciences2005,Pnas1997}. 
+
+%\section{Conception et modélisation}
+\subsection{Carte rétinotopique}
+
+%Les relations spatiales que les cellules ganglionnaires entretiennent entre elles au sein de la rétine, sont préservées au niveau de leurs cibles centrales. Les structures visuelles centrales présentent donc une représentation ordonnée, ou "carte" de l'espace visuel\cite{Neurosciences2004}. 
+
+%Au sein des aires visuelles rétinotopiques de plus bas niveau, la fovéa est représentée proche du pôle occipital, alors que les régions périphériques sont projetées sur les parties plus antérieures de la surface corticale, la coordonnée d’excentricité étant donc « encodée » dans la direction postéro-antérieure. De plus, la carte rétinotopique est souvent déformée, ceci est lié au fait que l'espace visuel n'est pas uniformément échantillonné au niveau de la rétine.
+
+%Pour analyser la rétinotopie de manière quantitative, on définit un système de coordonnées dans le champ visuel. Les coordonnées les plus adaptées au système visuel sont des coordonnées polaires (r,a). On caractérise alors une position dans le champ visuel par son excentricité par rapport au centre du regard et par son angle polaire a, mesuré par exemple par rapport au méridien vertical inférieur. 
+
+%On peut donc définir une carte rétinotopique qui va correspondre à la transformation spatiale de l'image par l'arrangement spatial de la grille des neurones. Elle est souvent approchée par une transformée log-polaire de l'image sphérique centrée sur l'œil\cite{Robinson1972}. Le modèle le plus utilisé pour effectuer la transformation des coordonnées polaires du stimulus visuel sur la rétine en coordonnées cartésiennes sur le colliculus supérieur est celui proposé par Ottes en 1986\cite{Ottes1986}.
+\section{Activité Colliculaire : Carte Motrice}
+
+
+%\subsection{Types de neurones}
+
+	
+%Les neurones des couches profondes du colliculus supérieur ont été classés en 3 types :fixation, build-up et burst, en se basant sur des critères décrits précédemment dans \cite {Goldberg1972,Munoz1993a,Dorris1997,Munoz1995a}. La profondeur de la surface dorsale du colliculus supérieur a été déterminée par la profondeur à laquelle on constate le début d'une activité.
+
+%Pour être classé comme un neurone de fixation (FN), le neurone doit être situé de 1 à 3 mm au-dessous de la surface dorsale du pôle rostrolateral  et doit posséder les caractéristiques suivantes: (1) une activité tonique > 10 spikes/sec au cours de la fixation visuelle, et (2) un arrêt d'activité (pause) au cours de toutes les saccades ipsiversive et la plupart des saccades contraversive  \cite{Munoz1993a}. 
+
+%Pour être classé comme un build-up (BUN), un neurone doit être situé à 1-3 mm au-dessous de la surface dorsale du colliculus supérieur et posséder les caractéristiques de décharge suivantes : (1) commence à se décharger à une faible fréquence après le signal de déclenchement de la saccade (2) continue sa décharge jusqu'à la fin de la saccade \cite{Munoz1995a,Dorris1997}. 
+
+
+%Pour être classé comme un burst (BN), un neurone doit être situé à 1-3 mm au-dessous de la surface dorsale du colliculus supérieur, et doit posséder les caractéristiques de décharge suivantes : (1) se décharge à haute fréquence juste avant le début de la saccade (2) diminue son activité entre le signal de faire une apparition Saccade et Saccade. Donc il possède un pic important d'activité.
+
+%Cette classification reste comme une hypothèse permettant de définir des modèles de contrôle saccadique mais certains chercheurs optent plutôt pour une seule population de cellules colliculaires qui change de comportement en fonction des paramètres extérieurs et des conditions expérimentales. 
+%\section{Simulations et résultats}
+%\section{Discussion}
+

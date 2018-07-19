@@ -1,0 +1,13 @@
+
+This work aimed at addressing the following key-points: 
+\begin{itemize}
+\item Making the difference between the discretized model {\em sampling} time and the implementation {\em simulation} time
+(several implementation steps may be use to iteratively estimate one sample of time, whereas a closed-form expression may provide the result after several sampling times in
+one simulation time).
+\item Calculating the bias between a continuous stable trajectory and its discretized approximation, all along the trajectory and given a sampling time 
+(not only be sure that either the asymptotic targets are the same or that everything is perfect if the sampling is infinitesimally small).
+\item Making explicit the goals of using synchronous/asynchronous mechanisms at both the modeling level (asynchronous evaluation mechanisms avoid generating spurious synchronizations not present at the modeling level) and the implementation level (simulation on coarse or fine grain parallel processing clusters to multiply the calculation capability). 
+\item Specifying whether not only the calculation but also the time is distributed (global time versus local time), i.e. whether a discrete clock dynamic system versus a discrete event dynamic system is considered.
+\item Deriving, in the case of the general family of dynamic neural field distributed (DNF) and interconnected units, quantitative bounds that guaranty the convergence of the implementation calculations towards the modeling expected solution (you mean the solution expected from the modeling??).
+\end{itemize}
+Addressing all these issues in such a short review would have been unrealistic, whereas a major but rather unknown work \cite{Mitra:1987} on asynchronous computing, addresses these issues at a very general and profound level. The goal of this paper is to apply these results to the case of DNF computations and provide the complements in order to make these results directly usable.

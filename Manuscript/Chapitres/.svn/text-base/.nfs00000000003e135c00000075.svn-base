@@ -1,0 +1,42 @@
+\DontNumberThisInToc
+\DontFrameThisInToc
+\ChapterNoNumberCitation{Conclusion g{\'e}n{\'e}rale et perspectives}{Yes I can}{}{10cm}
+
+
+
+Dans notre thèse nous avons exploré les avancées que l'étude des systèmes neuronaux peut rapporter à la compréhension de la thématique ``perception versus action''. En effet, les succès expérimentaux des réseaux de neurones artificiels et des modèles de champs neuronaux sont principalement dûs à la capacité qu'ils ont à modéliser une variété importante de structures neuronales (colliculus, cervelet, noyaux sous$-$corticaux, cortex sensoriel, associatif ou moteur) et à expliquer certains phénomènes du vivant, en allant de l'échelle neuronale à l'échelle comportementale. Les constituants essentiels de ces modèles (à savoir les flux d'informations entrants et sortants, la connectivité interne et l'organisation temporelle) peuvent s'adapter à la diversité des architectures de ces structures et offrent alors un outil expérimental efficace pour les simuler et mieux les comprendre. \\
+
+Dans ce travail de thèse, nous nous sommes intéressés à d'identifier les caractéristiques du calcul neuronal à exploiter pour permettre le développement de systèmes enactifs dans la perspective des affordances de \cite{Varela:1993}. Nous avons cherché, en particulier, à comprendre les proprietés émergentes de l'interaction entre des unités élémenentaires en combinant deux approches. Une première approche consiste à s'inspirer des données biologiques et des expériences comportementalles pour définir les paramètres de bases et poser les hypothèses sur les rôles et fonctions des différentes structures et différents flux d'information. La deuxième consiste, inversement, à partir des modèles pour essayer d'expliquer ce qui se passe dans le monde réel, en donnant des prédictions et des schémas fonctionnels qui inspirent et dirigent les biologistes dans leurs investigations.\\
+
+Nous avons essayé de répondre essentiellement aux problématiques suivantes:
+\begin{itemize}
+\item[$\bullet$] D'un point de vue calculatoire: Quelles sont les hypothèses à considérer à propos de l'organisation spatiale et temporelle des réseaux de neurones ?
+\item[$\bullet$] D'un point de vue fonctionnel: 
+\begin{itemize}
+\item[$\bullet$]Comment obtenir, à partir de règles locales simples dans une sous-population homogène et d'un traitement séquentiel, des propriétés et des comportements complexes (en particulier une sélection de l'action)?
+\item[$\bullet$]Comment une prise de décision est assurée, à large échelle, lorsque des boucles différentes et des flux hétérogènes viennent biaiser ce traitement séquentiel? 
+\end{itemize}
+\end{itemize}
+
+De nombreux modèles de neurones sont régis par des équations différentielles qui sont en général très complexes surtout lorsqu'on cherche à faire des modèles biophysiques bien précis. Il est donc nécessaire de s'intéresser à l'étude de simplifications qui permettent tout de même de capturer les propriétés essentielles du calcul neuronal, dans le cadre des fonctions que l'on cherche à réaliser. Deux problèmes s'imposent. D'abord, la résolution numérique nécéssite le passage da la description continue à une description discrète (dans l'espace et le temps). Ensuite, il est implicitement supposé que le calcul est \textit{synchrone} entre les différentes unités, et c'est le cas dans la plupart des réseaux de neurones artificiels d'aujourd'hui. Cette position est contestable d'un point de vue biologiste, d'o`u l'interêt d'examiner le mode d'évaluation asynchrone dans le cadre des neurosciences computationnelles.\\
+
+\paragraph{...au continu asynchrone}
+
+Il est assez contre-intuitif de s'appuyer implicitement sur une horloge centrale dans un système neuronal distribué. Dans ce contexte, nous avons étudié dans quelle mesure nous pouvons éliminer cette horloge centrale et mettre en oeuvre un calcul plutôt \textit{asynchrone} dans le cadre des champs neuronaux dynamiques.\\
+
+Quel est donc la pertinence de une telle description continue si l'on veut évaluer à l'aide des équations asynchrones numériques? Idéalement,
+nous souhaitons nous pourrions avoir une discreption continue asynchrone équivalente, mais malheureusement, ce n'est pas encore le cas dans le domaine des mathématiques. Nous devrions alors prendre des précautions supplémentaires lors de la description d'un système en utilisant les équations continues et je me demande si nous sommes vraiment simulant ce que nous annoncé dans la définition de la système. En particulier, au niveau de la modélisation mésoscopique, il peut être intéressant d'utiliser un paradigme basé sur les événements au lieu d'une horloge basée sur, comme il s'agit d'un bien défini
+paradigme qui prend en considération le fait que non seulement le traitement, mais aussi le calendrier sont entièrement distribués.\\
+
+\paragraph{De la sélection intrinsèque...}
+
+Nous avons introduit un modèle minimaliste de colliculus supérieur sur la base de d'un large ensemble de données biologiques. Ce modèle a été conçu  en s'appuyant sur un minimum d'hypothèses dans un cadre de calcul numérique distribué. Le comportement des saccades, à travers les différentes expériences, est une propriété émergente d'un calcul local et homogène. Si on examine de peu plus près le processus de sélection qui est effectuée lorsque le modèle reçoit en entrée deux stimuli identiques (mais
+à deux endroits différents), on peut expliquer le choix des stimuli les plus proches à la région fovéale par la magnification corticale. Autrement dit, la cette magnification influence  profondément la topologie du réseau et par conséquent la saillance de tout stimuli présenté. Ce comportement de sélection
+est donc très liée à la disposition spatiale et physique des unités de calcul.
+L'intelligence du système est donc ancrée dans son instanciation physique (même si elle est simulée dans notre cas).\\
+
+\paragraph{...à la selection motivée}
+
+Notre avons ensuite introduit un modèle de ganglions de la base pour la sélection de l'action qui conserve le mécanisme basique de sélection intrinsèque par désinhibition du plus fort. Nous avons proposé, en plus, un mécanisme d'évaluation de la saillance qui donne plus de liberté dans la détermination de choix de l'action. Le système adaptatif proposé met en exergue le rôle possible des ganglions de la base dans l'encodage de la motivation et permet donc de moduler la sélection intrinsèque prédéfinie par la topographie, l'architecture et les habitudes.\\
+
+Une perspective de ce travail est de relier les deux modèles proposés avec  pour avoir le comportement global de la boucle cortico-basale oculomotrice. Par la suite il serait souhaitable d'explorer les autres boucles cortico-basales et les interactions entre-elles en partant de la théorie de la spirale d'Haber \cite{Haber:2000}. \\

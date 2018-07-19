@@ -1,0 +1,56 @@
+\subsection{Convergence and guaranty of computation}
+
+Let us now report the proof of the convergence of asynchronous algorithms. We are in a {\em bounded asynchronous framework}, i.e. two main assumptions are required: \begin{itemize}
+\item {\em bounded delays}. The delays should be bounded by a uniform finite constant $\Delta_{ij} \leq D < +\infty$. All sampling delays are thus finite.
+\item {\em non starvation condition}. There is a maximal uniform bound $B$, between two updates for a given unit. Each unit should provide an update at least once during all interval of length $B$.
+\end{itemize}
+Different versions of these assumptions have been assumed in asynchronous computational algorithms like in \cite{Chazan:1969}. 
+Therefore, with some additional conditions on the differential equations system (specially the leak function), uniform convergence at a geometric rate is proved. Let us precisely state the result.
+
+Let us write ${\bf W}$ the weight matrix defined in~(\ref{eq:def-W}) in the case without transmission delay and when $\sigma_j(u) = u$. If transmission delays occur, ${\bf W}$ is now a tensorial quantity, and standard methods to rewrite the $n$th-order system as an augmented dimensional $1$st-order system are standard, ${\bf W}$ being a matrix in the augmented system. If the non-linearity $\sigma_j(u)$ is present, using differential inequalities, the non-linear system has to be bounded by a linear system of weight ${\bf W}'$. This is non trivial and beyond the scope of this short paper, and we refer to \cite{Mitra:1987} for a full development. Despite the technical difficulties, the underlying idea is quite simple: the weight has to be multiplied somehow by the highest slope of the non-linearity, i.e. $W'_{ijd} \simeq \sigma_j'(0) \, W_{ijd}$ for a sigmoid profile. Therefore, though not trivially, the following result holds in the most general case.
+
+Based on this, if we refer to Mitra's work, our differential equation is a particular case of the proposed framework\footnote{It corresponds to equation (6.7i) of \cite{Mitra:1987}, with ${\bf D} = {\bf I}$ the (identity matrix) and ${\bf B} = {\bf W}$.}. Applying Proposition 2 of the paper, uniform convergence at a geometric rate in the asynchronous mode occurs when, in our case, ${\bf I} - |{\bf W}|$ is an M-matrix (i.e. a matrix whose off-diagonal entries are less than or equal to zero, with eigenvalues whose real parts are positive).
+Since ${\bf W}$ is a symmetric positive matrix, thus diagonalizable, with positive eigen-values, ${\bf I} - |{\bf W}|$ is a M-matrix a soon as these eigen-values are smaller than one.
+As a consequence, we can conclude that asynchronous computation convergence in such a neural network is guaranteed and that the long-term average rate geometric convergence (per update) is not less than:
+%%
+\begin{align}
+\label{eq:convergence}
+\frac{1}{\tau_{\min}} \leq \frac{1}{D + B}
+\end{align}
+%%
+where $1/\tau_{\min}$ is the spectral radius of ${\bf W}$, i.e., the largest (here positive) eigen-value corresponding to the smallest combined leak of the system. This is a very precise and effective result, {\em with a usable number}.
+
+The main problem, even if the system is finite and time is discrete, is not only to ensure the convergence to a stable state (this obtained here, if the system is contracting), but to guaranty the computation is going to converge to the right result. Here is the power of the Mitra result. In the non-linear case, Mitra has thus to assume that the non-linear functions are continuous (but not necessarily smooth) and bounded by a linear contracting function, to obtain the same result. In our case, this means that the non-linear, so-called sigmoid function $\sigma()$ can not be a step function, but any usual continuous profile is convenient.
+
+\subsubsection*{Convergence when values are discretized}
+
+A step further, let us discuss what can be stated, when values are also discretized.
+In the numerical analysis community, the  reference book in both continuous and discrete context is Bertsekas and Tsitsiklis book, 
+chapters 6 and 7 \cite{Bertsekas:1997}, released in 1989. It presents some algorithms and gives sufficient conditions for convergence for general nonlinear problems and necessary conditions for linear problems. 
+In the special case of discrete dynamic systems without transmission delays, the main result presented in \cite{Robert:1994,Bahi:2002}, is that if a system is pseudo-periodic, it converges at most after $N$ pseudo-periods. A pseudo-period corresponds to a sequence of events in which each unit is updated at least once. So with only $N$ synchronization points the system convergence is guaranteed. 
+But when we introduce transmission delays and continuous variables, such an assumption is no more valid, thus does not ensure the convergence. 
+
+\subsubsection*{An illustrative example}
+
+Let us consider for example a two-layer network, each layer being of size $N \times N$ units. 
+An input layer corresponding to the constant current entry is feeding an output layer. 
+Each unit of index $i$ of the output layer receives its input $I_{i}$ from the input layer with respect to a receptive field (a Gaussian connection). 
+We suppose that there is neither lateral connection nor feedback in the input map. Lateral connections in the output map are excitatory, decreasing with distance and the input is inhibitory (the reverse connectivity scheme is also suitable). It means that each neuron in the output layer is excited by its neighbors and inhibited by the neurons in its receptive field. The resultant activity in the output map is a difference of Gaussian which is a computation scheme very used in dynamic neural networks.
+
+
+So, in this case, for each unit of the $M = N \times N$ units, equation~(\ref{eq:DNF-discrete}) writes with weights $W_{i=(u,v)\,j=(u',v')\,d}$ indexed in function of the 2D geometry of the network and $V_{i}$ stands for the membrane potential, $W_{ijd}$ is a positive symmetric tensor in this case, and $I_{i}$ is the constant current input, projection from the input layer. One instantiation, without delayed weight, would be to choose:
+%%
+\begin{align}
+W_{ij0} = a_+ \, e^{-\frac{|i - j|^2}{v_+^2}} -  a_- \, e^{-\frac{|i - j|^2}{v_-^2}} \notag
+\end{align}
+%%
+then as a side result of the work reported in \cite{Alexandre:2009}, we can state:
+%%
+\begin{align}
+\frac{1}{\tau_{\min}} \simeq \sqrt{\pi} \, (a_+ \, v_+ - a_- \, v_-) \notag
+\end{align}
+%%
+the approximation being to neglect the finite side effect of the corresponding 2D map. 
+Then, combined with~(\ref{eq:convergence}), we have a concrete bound on asynchronous convergence.\\
+
+As soon as the {\em sampling} and {\em simulation} times are not mixed, and the dynamic neural field dynamics attractor is a fixed point, attained with or without damped oscillations, any general asynchronous relaxations schemes with neither unbounded transmission delays, nor starvation, uniformly converge at a geometric rate. This result has obviously no reason to hold for more complex dynamics, especially in chaotic cases, since even a negligible error is going to make the discrete approximation diverge exponentially fast, without any chance to redress the error by a bounded number of asynchronous relaxations.  In the case of a periodic stable attractor, though the previous formalism can not be applied as it is, it seems reasonable to assume that the asynchronous relaxations would be able to maintain the discrete approximation scheme at a bounded error of the continuous exact solution. Thanks to this fundamental result, we can consider the synchronous/asynchronous dynamical neural fields simulation dilemma, (i.e., the fact that authors often wonder whether they can efficiently simulate such a dynamical system using an asynchronous scheme) as solved in such a context.

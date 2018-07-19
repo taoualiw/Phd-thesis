@@ -1,0 +1,167 @@
+\relax 
+\@writefile{toc}{\@numbertocswitchtrue }
+\@writefile{toc}{\@numberintocfalse }
+\@writefile{toc}{\@frame@switchtrue }
+\@writefile{toc}{\@thisnotframedtrue }
+\@writefile{toc}{\contentsline {chapter}{\numberline {Annexe\ A}Publications }{123}{annex.0.1}}
+\@writefile{toc}{\@numbertocswitchfalse }
+\@writefile{toc}{\@frame@switchfalse }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{annex:p}{{A}{123}{Conclusion g{\'e}n{\'e}rale et perspectives\relax }{annex.0.1}{}}
+\citation{Fates:2005,Fates:2008,Garcia:2006,Barret:1999}
+\citation{Bertsekas:1991,Bertsekas:1997}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}No clock to rule them all}{124}{section.0.4.1}}
+\@writefile{toc}{\contentsline {paragraph}{abstract}{124}{section*.10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.1}Introduction}{124}{subsection.0.4.1.1}}
+\citation{Coombes:2006}
+\citation{Wilson:1973}
+\citation{Amari:1977}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.2}General framework}{125}{subsection.0.4.1.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1.2.1}Dynamic Neural Fields}{125}{subsubsection.0.4.1.2.1}}
+\newlabel{eq:DNF-continuous}{{A.1}{125}{Dynamic Neural Fields\relax }{equation.0.4.1.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1.2.2}Discrete Neural Fields}{125}{subsubsection.0.4.1.2.2}}
+\citation{Grimbert:2008}
+\citation{Press:1988}
+\citation{Bertsekas:1991}
+\newlabel{eq:DNF-discrete}{{A.2}{126}{Discrete Neural Fields\relax }{equation.0.4.1.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1.2.3}From synchronous to asynchronous computations}{126}{subsubsection.0.4.1.2.3}}
+\citation{Mitra:1987}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1.2.4}The Asynchronous model}{127}{subsubsection.0.4.1.2.4}}
+\newlabel{paradigm}{{A.1.2.4}{127}{The Asynchronous model\relax }{subsubsection.0.4.1.2.4}{}}
+\citation{Alexandre:2009}
+\citation{Press:1988}
+\citation{Alexandre:2009}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.3}Before asynchronism: discretization issues}{128}{subsection.0.4.1.3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1.3.1}Time discretization issue}{128}{subsubsection.0.4.1.3.1}}
+\newlabel{eq:def-W}{{A.3}{128}{A toy example\relax }{equation.0.4.1.3}{}}
+\citation{Cessac:2007}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces {\em  Left view}: The normalized bias temporal profile between the continuous scheme and its discrete approximation, drawn here for $\Delta t / \tau _j = [0.05, 0.1, 0.2, 0.5]$ from the flattest to the sharpest curve respectively. {\em  Right view}: The integral of the bias along the trajectory as a function of $\Delta t / \tau _j$, making explicit that the cumulative bias is never negligible even for very small leak, while it diverges for large leak. See text for details.}}{129}{figure.0.4.1}}
+\newlabel{fig:euler-error}{{A.1}{129}{{\em Left view}: The normalized bias temporal profile between the continuous scheme and its discrete approximation, drawn here for $\Delta t / \tau _j = [0.05, 0.1, 0.2, 0.5]$ from the flattest to the sharpest curve respectively. {\em Right view}: The integral of the bias along the trajectory as a function of $\Delta t / \tau _j$, making explicit that the cumulative bias is never negligible even for very small leak, while it diverges for large leak. See text for details}{figure.0.4.1}{}}
+\citation{Cessac:2008}
+\citation{Rougier:2006}
+\citation{Robert:1994}
+\newlabel{eq:DNF-solution}{{A.4}{130}{When asynchronism solves the situation\relax }{equation.0.4.1.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1.3.2}Value discretization issues}{130}{subsubsection.0.4.1.3.2}}
+\newlabel{dds}{{A.1.3.2}{130}{Value discretization issues\relax }{subsubsection.0.4.1.3.2}{}}
+\citation{Chazan:1969}
+\citation{Mitra:1987}
+\citation{Mitra:1987}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.4}Convergence and guaranty of computation}{131}{subsection.0.4.1.4}}
+\newlabel{eq:convergence}{{A.5}{131}{Convergence and guaranty of computation\relax }{equation.0.4.1.5}{}}
+\citation{Bertsekas:1997}
+\citation{Robert:1994,Bahi:2002}
+\citation{Alexandre:2009}
+\citation{Gerstner:2002}
+\citation{Cessac:2008,Cessac:2010}
+\citation{Rochel:2003}
+\citation{Brette:2007}
+\citation{Cessac:2009}
+\citation{Rougier:2006}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.5}A generic asynchronous implementation}{133}{subsection.0.4.1.5}}
+\citation{Alexandre:2009}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces An example of asynchronous sampling of such maps (event-based implementation), applying convergence criteria derived here. We have numerically verified the conjecture that the present results apply when using asynchronous sampling. {\em  Left view}: intermediate result, the fact asynchronous sampling yields randomization is visible. {\em  Right view}: final result, after convergence.}}{134}{figure.0.4.2}}
+\newlabel{fig:bump}{{A.2}{134}{An example of asynchronous sampling of such maps (event-based implementation), applying convergence criteria derived here. We have numerically verified the conjecture that the present results apply when using asynchronous sampling. {\em Left view}: intermediate result, the fact asynchronous sampling yields randomization is visible. {\em Right view}: final result, after convergence}{figure.0.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.6}Discussion and conclusion}{134}{subsection.0.4.1.6}}
+\citation{Mitra:1987}
+\citation{Rougier:2006}
+\citation{Ungerleider:1982}
+\citation{Milner:1995}
+\@writefile{toc}{\contentsline {paragraph}{Acknowledgment.}{136}{section*.17}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Visual Target Selection Emerges from a Bio-inspired Network Topology}{136}{section.0.4.2}}
+\@writefile{toc}{\contentsline {paragraph}{Abstract}{136}{section*.18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2.1}Introduction}{136}{subsection.0.4.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.1.1}At the functional level}{136}{subsubsection.0.4.2.1.1}}
+\citation{Goodale:1998}
+\citation{Ballard:1997}
+\citation{Rizzolatti:1987}
+\citation{Goodale:1998}
+\citation{Lettvin:1968}
+\citation{Isa:2002}
+\citation{Girard:2005}
+\citation{Muller:2005}
+\citation{Girard:2005}
+\citation{Findlay:1999}
+\citation{Kramer:1999}
+\citation{Godijn:2002}
+\citation{Amari:1977}
+\citation{Trappenberg:2001,Schneider:2002}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.1.2}At the physiological level}{137}{subsubsection.0.4.2.1.2}}
+\citation{Trappenberg:2001}
+\citation{Schneider:2002}
+\citation{Wurtz:1994}
+\citation{Godijn:2002}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.1.3}At the operational level}{138}{subsubsection.0.4.2.1.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces A unit is a set of one to several values ($V_i$). A group is a structured set of one to several homogeneous units. A layer is a subset of a group restricted to a unique value $V_i$. A layer is a group. A link is a weighted connection between a source group to a target group. A group can be linked to any other group including itself.}}{139}{figure.0.4.3}}
+\newlabel{fig:group}{{A.3}{139}{A unit is a set of one to several values ($V_i$). A group is a structured set of one to several homogeneous units. A layer is a subset of a group restricted to a unique value $V_i$. A layer is a group. A link is a weighted connection between a source group to a target group. A group can be linked to any other group including itself}{figure.0.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2.2}Model}{139}{subsection.0.4.2.2}}
+\citation{Marilly:1999}
+\citation{Purves:2004}
+\citation{Robinson:1972}
+\citation{Ottes:1986}
+\citation{Ottes:1986}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.4}{\ignorespaces The model is made of three distinct groups. The retina receives input from a CCD camera and transmit information to the primary visual cortex where the actual magnification occurs. This result is then feed to the superior colliculus where salient locations enter competition.}}{140}{figure.0.4.4}}
+\newlabel{fig:model}{{A.4}{140}{The model is made of three distinct groups. The retina receives input from a CCD camera and transmit information to the primary visual cortex where the actual magnification occurs. This result is then feed to the superior colliculus where salient locations enter competition}{figure.0.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.2.1}Model architecture}{140}{subsubsection.0.4.2.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.2.2}Cortical Magnification}{140}{subsubsection.0.4.2.2.2}}
+\citation{Robinson:1972}
+\citation{Bear:1996}
+\citation{Wilson:1973,Amari:1977,Taylor:1999}
+\citation{Rougier:2006}
+\citation{Munoz:1998}
+\newlabel{eq:magnification}{{A.7}{141}{Cortical Magnification\relax }{equation.0.4.2.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.2.3}Dynamic Neural Field Theory}{141}{subsubsection.0.4.2.2.3}}
+\newlabel{eq:dnf}{{A.8}{141}{Dynamic Neural Field Theory\relax }{equation.0.4.2.8}{}}
+\citation{Sparks:1990}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.5}{\ignorespaces Cortical magnification from the retina to the visual cortex distorts geometrical properties of the image while keeping neighborhood relationship.}}{142}{figure.0.4.5}}
+\newlabel{fig:magnification}{{A.5}{142}{Cortical magnification from the retina to the visual cortex distorts geometrical properties of the image while keeping neighborhood relationship}{figure.0.4.5}{}}
+\newlabel{eq:DoG}{{A.9}{142}{Dynamic Neural Field Theory\relax }{equation.0.4.2.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2.3}Results}{142}{subsection.0.4.2.3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.3.1}Output Decoding}{142}{subsubsection.0.4.2.3.1}}
+\citation{McIlwain:1976,Sparks:1976}
+\citation{Lee:1988}
+\citation{Robinson:1972}
+\citation{Yarbus:1967,Levy:1974,Noton:1971}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.3.2}Target Selection from exogenous information}{143}{subsubsection.0.4.2.3.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.6}{\ignorespaces Accuracy of the model of the superior colliculus has been measured using a set of retina targets that have been sequentially presented to the SC model. For each target and after convergence (difference of activity between time $t$ and time $t+dt$ is negligible), the center of mass of the collicular activity has been decoded and represented as a circle (black dots represent the actual projection of the target in collicular coordinates).}}{144}{figure.0.4.6}}
+\newlabel{fig:accuracy}{{A.6}{144}{Accuracy of the model of the superior colliculus has been measured using a set of retina targets that have been sequentially presented to the SC model. For each target and after convergence (difference of activity between time $t$ and time $t+dt$ is negligible), the center of mass of the collicular activity has been decoded and represented as a circle (black dots represent the actual projection of the target in collicular coordinates)}{figure.0.4.6}{}}
+\citation{Fix:2006}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.7}{\ignorespaces The projection of two equivalent horizontal stimuli but at different eccentricities. The stimulus nearer to the fovea is automatically selected to be the saccade target. }}{145}{figure.0.4.7}}
+\newlabel{fig:selection}{{A.7}{145}{The projection of two equivalent horizontal stimuli but at different eccentricities. The stimulus nearer to the fovea is automatically selected to be the saccade target. \relax }{figure.0.4.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2.3.3}Natural Images Processing}{145}{subsubsection.0.4.2.3.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2.4}Discussion}{145}{subsection.0.4.2.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.8}{\ignorespaces An image of a computer keyboard has been captured using a color camera (resolution $1024 \times 1280$) and transformed into a normalized gray level image. \textbf  {Upper figure.} The right half of the image is presented to the half retina area which in turn feeds the V1 area where retinotopy is applied following equation \ref  {eq:magnification}. The colliculus area enters a competition stage where most salient locations are eligible for final activation and after some iterations, the competition ends up onto the {\tt  O} letter that is thus considered the most salient location of the visual scene according to its location and activation. \textbf  {Lower figure.} A saccade has been simulated to center the {\tt  O} letter into the center of the fovea and the colliculus now focuses onto a subpart of the {\tt  O} letter that appears to be the newly most salient location of the new visual scene.}}{146}{figure.0.4.8}}
+\newlabel{fig:colliculus}{{A.8}{146}{An image of a computer keyboard has been captured using a color camera (resolution $1024 \times 1280$) and transformed into a normalized gray level image. \textbf {Upper figure.} The right half of the image is presented to the half retina area which in turn feeds the V1 area where retinotopy is applied following equation \ref {eq:magnification}. The colliculus area enters a competition stage where most salient locations are eligible for final activation and after some iterations, the competition ends up onto the {\tt O} letter that is thus considered the most salient location of the visual scene according to its location and activation. \textbf {Lower figure.} A saccade has been simulated to center the {\tt O} letter into the center of the fovea and the colliculus now focuses onto a subpart of the {\tt O} letter that appears to be the newly most salient location of the new visual scene}{figure.0.4.8}{}}
+\citation{ORegan:2001}
+\@setckpt{Chapitres/publications}{
+\setcounter{page}{148}
+\setcounter{equation}{9}
+\setcounter{enumi}{8}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{40}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{4}
+\setcounter{section}{2}
+\setcounter{subsection}{4}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{8}
+\setcounter{table}{0}
+\setcounter{division}{9}
+\setcounter{annex}{1}
+\setcounter{parentequation}{0}
+\setcounter{AM@survey}{0}
+\setcounter{Item}{12}
+\setcounter{Hfootnote}{40}
+\setcounter{LT@tables}{0}
+\setcounter{LT@chunks}{0}
+\setcounter{mtc}{5}
+\setcounter{minitocdepth}{2}
+\setcounter{ptc}{0}
+\setcounter{parttocdepth}{2}
+\setcounter{section@level}{2}
+}

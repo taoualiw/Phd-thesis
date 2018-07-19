@@ -1,0 +1,56 @@
+\DontNumberThisInToc
+\DontFrameThisInToc
+\Annex{Paramètres des simulations \label{annex:B}} 
+
+Au cours de ma thèse, j'au utilisé la plateforme DANA (acronyme de Distributed Asynchronous Numerical and Adaptative computations) développée par Nicolas Rougier pour réaliser la plupart de mes simulations. Cette plateforme est composé d'un coeur en C++ et d'une interface en Python qui permet une interaction facile avec la simulation tout en profitant des bibliothèques de tracé graphique (matplotlib) et de calcul scientifique rapide (numpy,scipy). (voir Annexe C de la thèse de Jérémy Fix \cite{Fix:2008} pour plus de détails sur la plateforme).
+
+\section{Simulation du modèle du colliculus}
+\begin{table}[h]
+  \begin{center}
+    \begin{tabular}{|c|c||c|c|}
+
+      \hline
+      taille de $R$        & $512 \times 256$   & $\delta t$        & 1ms    \\
+\hline
+      taille de $SC$      & $64 \times 64$    &  $\tau$  & 100ms    \\
+ \hline     E, $\sigma_e$ &  1.25, 0.1                 & A         & 3$^\circ$ \\
+\hline      I, $\sigma_i$ &  0.7, 1                   & $B_x$     & 1.4mm    \\
+\hline      C, $\sigma_c$ &  1.00, 1/90             & $B_y$     & 1.8mm    \\
+\hline      taille de la carte intermédiaire        &$256 \times 256$  & &   \\  
+      \hline
+    \end{tabular}
+  \end{center}
+\caption{Paramètres des simulations}
+\label{param}
+\end{table}
+\section{Simulation du modèle des ganglions de la base}
+\begin{table}[h]
+  \begin{center}
+    \begin{tabular}{|c|c||c|c||c|c||c|c|}
+      \hline
+      $N$   & 6   & $\tau$   & 5ms &  $e_{\gls{str}}$ & $+0.1$ & $e_{\gls{stn}}$ & $-0.1$  \\
+      \hline
+      Constantes  \\
+      \hline
+      $e_{\gls{gpe}}$ & $-0.1$ & $e_{\gls{gpi}}$ & $-0.25$ &  $e_{\gls{vlt}}$ & $-0.2$ & $e_{\gls{pfc}}$ & $+0.05$\\
+      \hline
+      Poids(W) \\
+      \hline
+       $STN-GPe$ & $+0.1$ &$Str-GPe$ & $-0.4$ & $STN-GPi$ & $+0.5$ & $Str-GPi$ & $-0.85$  \\
+      \hline
+       $GPe-STN$ & $-0.2$ &$PFC-STN$ & $+1.0$ & $S-Str$ & $+0.01$ & $PFC-Str$ & $+0.2$  \\
+      \hline
+       $Noise-Str$ & $+0.1$ &$PC-Str$ & $+0.2$ & $GPe-Str$ & $-0.8$ & $VLT-Str$ & $+1.0$  \\  
+      \hline
+       $GPi-VLT$ & $-1.0$ &$PFC-VLT$ & $+0.6$ & $VLT-PFC$ & $+1.0$ & $PFC-PFC$ & $-1.0$  \\      
+\hline
+    \end{tabular}
+  \end{center}
+\caption{Paramètres des simulations}
+\label{param011}
+\end{table}
+Comme dans les modèles GPR et CBG, nous avons utilisé des neurones artificiels de type intégrateur à fuite. L'activation d'un neurone est décrite par la variation de son activation qu'on notera U (qui peut être interprétée comme le potentiel de membrane du neurone) selon l'équation suivante $dU/dt=-1/\tau*(U-I+e)$. $I$ correspond à la somme des afférences post-synaptiques des neurones qui projettent vers le neurone considéré, $e$ correspond à un seuil d'activation et $\tau$ est une constante temporelle caractéristique de la membrane cellulaire. $\tau$ est supposé être le même dans toutes les structures pour la simplification sauf pour le cortex préfrontal, nous avons pris une constante de temps plus lente de l'ordre de $0.1s$ et nous avons introduit une connectivité latérale inhibitrice de valeur $0.7$ (chaque neurone inhibe de manière égale tous les autres voisins).\\
+
+La sortie d'un neurone correspondant à la fréquence moyenne de décharge est évaluée donc selon une équation linéaire par parties de la forme suivante: $V=minimum(maximum(U,0),1)$. La projection d'un neurone $N$ vers un neurone $M$ est égale à la sortie de ce neurone modulé par le poids de la connexion entre les deux: $I_{N}= W_{M-N}* V_{M} $.\\
+ 
+

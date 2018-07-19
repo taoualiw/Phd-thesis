@@ -1,0 +1,16 @@
+all :
+	pdflatex jphysio-11-taouali
+	bibtex jphysio-11-taouali
+	pdflatex jphysio-11-taouali
+	pdflatex jphysio-11-taouali
+	acroread jphysio-11-taouali.pdf
+
+svn :
+	svn up
+	svn ci -m ''
+	svn status
+
+zip :
+	svn up
+	rm -rf $(HOME)/Desktop/jphysio-11-taouali ; svn export . $(HOME)/Desktop/jphysio-11-taouali
+	cd  $(HOME)/Desktop ; rm -f jphysio-11-taouali.zip ; zip -9qr jphysio-11-taouali jphysio-11-taouali ; rm -rf jphysio-11-taouali

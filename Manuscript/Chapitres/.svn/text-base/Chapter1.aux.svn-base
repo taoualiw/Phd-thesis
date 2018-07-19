@@ -1,0 +1,182 @@
+\relax 
+\@writefile{toc}{\@numbertocswitchtrue }
+\@writefile{toc}{\@numberintocfalse }
+\@writefile{toc}{\@frame@switchtrue }
+\@writefile{toc}{\@thisnotframedtrue }
+\@writefile{toc}{\contentsline {chapter}{\numberline {Chapitre\ 1}Cadre de mod\'elisation: Les r\'eseaux de neurones dynamiques}{7}{chapter.0.1}}
+\@writefile{toc}{\@numbertocswitchfalse }
+\@writefile{toc}{\@frame@switchfalse }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lof}{\contentsline {xchapter}{Cadre de mod\'elisation: Les r\'eseaux de neurones dynamiques}{7}{chapter.0.1}}
+\@writefile{lot}{\contentsline {xchapter}{Cadre de mod\'elisation: Les r\'eseaux de neurones dynamiques}{7}{chapter.0.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Introduction}{7}{section.0.1.1}}
+\citation{Kandel:1985}
+\citation{Rumelhart:1987}
+\citation{Kandel:2000}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Qu'est ce qu'un neurone: une r\IeC {\`e}gle locale}{9}{section.0.1.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Le neurone biologique}{9}{subsection.0.1.2.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Sch\IeC {\'e}ma d'un neurone biologique [wikipedia]}}{9}{figure.0.1.1}}
+\newlabel{neurone}{{1.1}{9}{Schéma d'un neurone biologique [wikipedia]\relax }{figure.0.1.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Les diff\IeC {\'e}rentes phases du potentiel d'action. 1: pr\IeC {\'e}potentiel, phase de repos. 2: d\IeC {\'e}polarisation de la membrane. 3: repolarisation rapide. 4: p\IeC {\'e}riode r\IeC {\'e}fractaire, hyperpolarisation.}}{10}{figure.0.1.2}}
+\newlabel{potentiel}{{1.2}{10}{Les différentes phases du potentiel d'action. 1: prépotentiel, phase de repos. 2: dépolarisation de la membrane. 3: repolarisation rapide. 4: période réfractaire, hyperpolarisation}{figure.0.1.2}{}}
+\citation{Shadlen:1994,Rieke:1996,Borst:1999,Gerstner:2002,Pouget:2003,Averbeck:2004,Cariani:2004}
+\citation{Mountcastle:1957,Hubel:1959}
+\citation{Oram:1999,Abeles:1994,Hopfield:1995,Bialek:1991,Shadlen:1994,Rieke:1996}
+\citation{Rieke:1997}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Qu'est ce qui code l'information?}{11}{subsection.0.1.2.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces Exemple d'enregistrement de trains de spikes de 30 neurones. Chaque ligne correspond \IeC {\`a} un neurone. L'axe horizontal repr\IeC {\'e}sente le temps (en total 4000ms). Chaque impulsion est repr\IeC {\'e}sent\IeC {\'e}e par un petit trait vertical (Kruger et Aiple, 1988)}}{11}{figure.0.1.3}}
+\newlabel{train}{{1.3}{11}{Exemple d'enregistrement de trains de spikes de 30 neurones. Chaque ligne correspond à un neurone. L'axe horizontal représente le temps (en total 4000ms). Chaque impulsion est représentée par un petit trait vertical (Kruger et Aiple, 1988)\relax }{figure.0.1.3}{}}
+\citation{Thorpe:1996}
+\citation{Okeefe:1993}
+\citation{Hopfield:1995,Maass:1996,Jensen:1996}
+\citation{Okeefe:1993}
+\citation{Alonso:1996}
+\citation{VonderMalsburg:1992,Eckhorn:1988,Gray:1989}
+\citation{Thorpe:1996}
+\citation{Gerstner:2002}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.2.1}Codage impulsionnel}{12}{subsubsection.0.1.2.2.1}}
+\@writefile{toc}{\contentsline {paragraph}{Les premiers spikes d\IeC {\'e}cident:}{12}{section*.3}}
+\@writefile{toc}{\contentsline {paragraph}{Phases:}{12}{section*.4}}
+\@writefile{toc}{\contentsline {paragraph}{Synchronie et corr\'elations:}{12}{section*.5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.2.2}Codage fr\IeC {\'e}quentiel}{12}{subsubsection.0.1.2.2.2}}
+\citation{Adrian:1926,Kandel:1991}
+\citation{Rieke:1997}
+\citation{Thorpe:1996,Keysers:2001}
+\citation{Gerstner:2002}
+\citation{Shadlen:1994}
+\citation{Wu:2002}
+\citation{Hubel:1988,Hubel:1962,Hubel:1977}
+\@writefile{toc}{\contentsline {paragraph}{Moyenne temporelle}{13}{section*.6}}
+\@writefile{toc}{\contentsline {paragraph}{Moyenne Stochastique}{13}{section*.7}}
+\@writefile{toc}{\contentsline {paragraph}{Moyenne spatiale : codage par population }{13}{section*.8}}
+\citation{Brunel:2001,Gerstner:2000}
+\citation{Wilson:1972,Amari:1977}
+\citation{Ermentrout:1980}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.2.3}Fonction d'activation }{14}{subsubsection.0.1.2.2.3}}
+\citation{Gutkin:2003,Wilson:1972,Pinto:1996}
+\citation{Ermentrout:1998}
+\citation{DeWeese:2003}
+\citation{Lee:1998,Maimon:2009}
+\citation{Perkel:1968}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces Exemples de fonctions de gain fr\IeC {\'e}quemment utilis\IeC {\'e}es pour les mod\IeC {\`e}les fr\IeC {\'e}quentiels. La fr\IeC {\'e}quence moyenne de tir $\nu $ est repr\IeC {\'e}sent\IeC {\'e}e en fonction de la valeur de l'entr\IeC {\'e}e $I$ qui peut \IeC {\^e}tre interpr\IeC {\'e}t\IeC {\'e}e comme un potentiel d'action provenant d'un autre neurone. A: une fonction de Heaviside. B: une fonction lin\IeC {\'e}aire par morceaux. C: une fonction sigmo\IeC {\"\i }de }}{15}{figure.0.1.4}}
+\newlabel{gain}{{1.4}{15}{Exemples de fonctions de gain fréquemment utilisées pour les modèles fréquentiels. La fréquence moyenne de tir $\nu $ est représentée en fonction de la valeur de l'entrée $I$ qui peut être interprétée comme un potentiel d'action provenant d'un autre neurone. A: une fonction de Heaviside. B: une fonction linéaire par morceaux. C: une fonction sigmoïde \relax }{figure.0.1.4}{}}
+\newlabel{vol}{{1.2.2.3}{15}{Fonction d'activation \relax }{equation.0.1.2.4}{}}
+\newlabel{act}{{1.2.2.3}{15}{Fonction d'activation \relax }{equation.0.1.2.5}{}}
+\citation{Hodgkin:1952}
+\citation{Blynel:2002}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.3}Le neurone artificiel}{16}{subsection.0.1.2.3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.3.1}Neurone impulsionnel}{16}{subsubsection.0.1.2.3.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Sch\IeC {\'e}ma \IeC {\'e}lectrique du mod\IeC {\`e}le Hodgkin-Huxley. Le courant ionique \IeC {\`a} travers la membrane peut \IeC {\^e}tre divis\IeC {\'e} en trois composants: courant de sodium ($I_K$), courant de potassium ($I_{Na}$) et une petite fuite de courant ($I_L$) caus\IeC {\'e}e par d'autres ions. Chaque composant peut \IeC {\^e}tre exprim\IeC {\'e} en termes de potentiel de repos de la cellule ($V$), des potentiels d'\IeC {\'e}quilibre respectifs pour chaque composant ($V_K$, $V_{Na}$ et $V_L$), des constantes refl\IeC {\'e}tant la conductance de chaque composant ($g_K$, $g_{Na}$ et $g_{L}$) et des variables suppl\IeC {\'e}mentaires ($n$, $m$ et $h$).}}{16}{figure.0.1.5}}
+\newlabel{Hodgkin}{{1.5}{16}{Schéma électrique du modèle Hodgkin-Huxley. Le courant ionique à travers la membrane peut être divisé en trois composants: courant de sodium ($I_K$), courant de potassium ($I_{Na}$) et une petite fuite de courant ($I_L$) causée par d'autres ions. Chaque composant peut être exprimé en termes de potentiel de repos de la cellule ($V$), des potentiels d'équilibre respectifs pour chaque composant ($V_K$, $V_{Na}$ et $V_L$), des constantes reflétant la conductance de chaque composant ($g_K$, $g_{Na}$ et $g_{L}$) et des variables supplémentaires ($n$, $m$ et $h$)}{figure.0.1.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.3.2}Neurone int\IeC {\'e}grateur-\IeC {\`a}-fuite}{16}{subsubsection.0.1.2.3.2}}
+\citation{McCulloch:1943}
+\citation{Rashevsky:1960}
+\citation{Hebb:1949}
+\citation{Hebb:1949,Hayek:1952}
+\citation{Rosenblatt:1958}
+\citation{McCulloch:1943}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces Le neurone formel r\IeC {\'e}alise une fonction non lin\IeC {\'e}aire born\IeC {\'e}e qui prend plusieurs entr\IeC {\'e}es $x_i$ (entr\IeC {\'e}es pr\IeC {\'e}-synaptiques) pond\IeC {\'e}r\IeC {\'e}es par des poids de connexion $w_i$ et retourne une sortie (sortie post-synaptique) $ y = f (x_1, x_2, ..., x_n; w_1, w_2, ..., w_n)$. }}{18}{figure.0.1.6}}
+\newlabel{formel}{{1.6}{18}{Le neurone formel réalise une fonction non linéaire bornée qui prend plusieurs entrées $x_i$ (entrées pré-synaptiques) pondérées par des poids de connexion $w_i$ et retourne une sortie (sortie post-synaptique) $ y = f (x_1, x_2, ..., x_n; w_1, w_2, ..., w_n)$. \relax }{figure.0.1.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Approche connexionniste: Les r\IeC {\'e}seaux de neurones}{18}{section.0.1.3}}
+\citation{Wilson:1973,Amari:1977}
+\citation{Chemla:2007}
+\citation{Vieville:2007}
+\citation{Wilson:1973,Taylor:1999,Amari:1977}
+\newlabel{eq: DNF-continuous}{{1.7}{19}{Approche connexionniste: Les réseaux de neurones\relax }{equation.0.1.3.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}Calcul adaptatif : Plasticit\IeC {\'e} et apprentissage}{19}{section.0.1.4}}
+\citation{Hebb:1949,Gerstner:2002}
+\citation{Stent:1973}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.1}Apprentissage supervis\IeC {\'e}}{20}{subsection.0.1.4.1}}
+\citation{Hebb:1949}
+\citation{Sutton:1998,Barto:1995}
+\citation{Doya:2000}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.2}Apprentissage non-supervis\IeC {\'e}}{21}{subsection.0.1.4.2}}
+\newlabel{AS}{{1.4.2}{21}{Apprentissage non-supervisé\relax }{subsection.0.1.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.3}Apprentissage par renforcement}{21}{subsection.0.1.4.3}}
+\citation{Grimbert:2008}
+\citation{Robert:1994}
+\@writefile{toc}{\contentsline {section}{\numberline {1.5}Int\IeC {\'e}gration num\IeC {\'e}rique: Champs neuronaux discrets }{22}{section.0.1.5}}
+\newlabel{eq: DNF-discret}{{1.10}{22}{Intégration numérique: Champs neuronaux discrets \relax }{equation.0.1.5.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.1}Discr\IeC {\'e}tisation des valeurs}{22}{subsection.0.1.5.1}}
+\citation{Alexandre:2009}
+\citation{Press:1988}
+\citation{Press:1988}
+\citation{Alexandre:2009}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.2}Discr\IeC {\'e}tisation du temps}{23}{subsection.0.1.5.2}}
+\newlabel{eq: def-W}{{1.11}{23}{Discrétisation du temps\relax }{equation.0.1.5.11}{}}
+\citation{Rougier:2009}
+\citation{Cessac:2007}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces {\em  \`A gauche}: Le profil temporel normalis\IeC {\'e} du biais de calcul entre le sch\IeC {\'e}ma continu et son approximation discr\IeC {\`e}te pour $\Delta t / \tau _j = [0.05, 0.1, 0.2, 0.5]$ en partant de la courbe la plus plate \IeC {\`a} la plus pointue . {\em  \`A droite}: L'int\IeC {\'e}gral du biais le long de la trajectoire en fonction de $Dt=\Delta t / \tau _j$, en explicitant que l'\IeC {\'e}cart syst\IeC {\'e}matique cumulatif n'est jamais n\IeC {\'e}gligeable, m\IeC {\^e}me pour des valeurs tr\IeC {\`e}s faibles du terme de fuite, alors qu'il diverge pour les valeurs importantes. Voir le texte pour plus de d\IeC {\'e}tails.}}{24}{figure.0.1.7}}
+\newlabel{fig: euler-error}{{1.7}{24}{{\em \`A gauche}: Le profil temporel normalisé du biais de calcul entre le schéma continu et son approximation discrète pour $\Delta t / \tau _j = [0.05, 0.1, 0.2, 0.5]$ en partant de la courbe la plus plate à la plus pointue . {\em \`A droite}: L'intégral du biais le long de la trajectoire en fonction de $Dt=\Delta t / \tau _j$, en explicitant que l'écart systématique cumulatif n'est jamais négligeable, même pour des valeurs très faibles du terme de fuite, alors qu'il diverge pour les valeurs importantes. Voir le texte pour plus de détails}{figure.0.1.7}{}}
+\citation{Fates:2005,Fates:2008,Garcia:2006,Barret:1999,Robert:1994}
+\citation{Bertsekas:1991,Bertsekas:1997}
+\citation{Bertsekas:1991}
+\@writefile{toc}{\contentsline {section}{\numberline {1.6}Calcul distribu\IeC {\'e}: A-t-on vraiment besoin d'une horloge centrale?}{25}{section.0.1.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6.1}De l'\'evaluation synchrone vers l'\'evaluation asynchrone }{25}{subsection.0.1.6.1}}
+\citation{Mitra:1987}
+\citation{Chazan:1969}
+\citation{Mitra:1987}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6.2}Le paradigme de calcul asynchrone}{26}{subsection.0.1.6.2}}
+\newlabel{paradigme}{{1.6.2}{26}{Le paradigme de calcul asynchrone\relax }{subsection.0.1.6.2}{}}
+\citation{Mitra:1987}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6.3}Convergence des algorithmes asynchrones}{27}{subsection.0.1.6.3}}
+\newlabel{convergence}{{1.6.3}{27}{Convergence des algorithmes asynchrones\relax }{subsection.0.1.6.3}{}}
+\citation{Chazan:1969}
+\citation{Pisot:1966}
+\citation{Mitra:1987}
+\citation{Mitra:1987}
+\citation{Alexandre:2009}
+\citation{Bertsekas:1997}
+\citation{Robert:1994,Bahi:2002}
+\newlabel{eq: convergence}{{1.13}{29}{Convergence des algorithmes asynchrones\relax }{equation.0.1.6.13}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.6.3.1}Convergence quand les valeurs sont discr\IeC {\`e}tes}{29}{subsubsection.0.1.6.3.1}}
+\citation{Alexandre:2009}
+\citation{Rougier:2006}
+\citation{Gerstner:2002}
+\citation{Cessac:2008,Cessac:2010}
+\citation{Rochel:2003}
+\citation{Brette:2007,Cessac:2009}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.6.3.2}Un exemple illustratif}{30}{subsubsection.0.1.6.3.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.6.3.3}L'approche \IeC {\'e}v\IeC {\'e}nementielle: Un exemple d'impl\IeC {\'e}mentation}{30}{subsubsection.0.1.6.3.3}}
+\citation{Cessac:2009}
+\citation{Fernandez:2010}
+\citation{Alexandre:2009}
+\citation{Alexandre:2009}
+\citation{Rougier:2006}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.8}{\ignorespaces Un exemple de traitement asynchrone des cartes neuronales (impl\IeC {\'e}mentation \IeC {\'e}v\IeC {\`e}nementielle), en appliquant les crit\IeC {\`e}res de convergence d\IeC {\'e}riv\IeC {\'e}s ici. Nous avons v\IeC {\'e}rifi\IeC {\'e} num\IeC {\'e}riquement la conjecture que les r\IeC {\'e}sultats actuels s'appliquent lorsque l'\IeC {\'e}valuation est asynchrone. {\em  Vue gauche}: r\IeC {\'e}sultat interm\IeC {\'e}diaire, la randomisation est visible. {\em  Vue droite}: r\IeC {\'e}sultat final, apr\IeC {\`e}s la convergence. Cela a \IeC {\'e}t\IeC {\'e} exp\IeC {\'e}riment\IeC {\'e} sur un DNF $ 128 \times 128 $ avec un profil de connectivit\IeC {\'e} lat\IeC {\'e}rale en diff\IeC {\'e}rence de Gaussiennes, en utilisant les m\IeC {\^e}mes valeurs dans les cas synchrones et asynchrones. Deux paradigmes asynchrones ont \IeC {\'e}t\IeC {\'e} exp\IeC {\'e}riment\IeC {\'e}es: (1) En utilisant les temps de mise \IeC {\`a} jour al\IeC {\'e}atoires uniform\IeC {\'e}ment \IeC {\'e}tablis dans un intervalle compatible avec les conditions de Mitra. (2) Un m\IeC {\'e}canisme ``parcimonieux'' , voir le texte pour plus de d\IeC {\'e}tails.}}{32}{figure.0.1.8}}
+\newlabel{fig: bump}{{1.8}{32}{Un exemple de traitement asynchrone des cartes neuronales (implémentation évènementielle), en appliquant les critères de convergence dérivés ici. Nous avons vérifié numériquement la conjecture que les résultats actuels s'appliquent lorsque l'évaluation est asynchrone. {\em Vue gauche}: résultat intermédiaire, la randomisation est visible. {\em Vue droite}: résultat final, après la convergence. Cela a été expérimenté sur un DNF $ 128 \times 128 $ avec un profil de connectivité latérale en différence de Gaussiennes, en utilisant les mêmes valeurs dans les cas synchrones et asynchrones. Deux paradigmes asynchrones ont été expérimentées: (1) En utilisant les temps de mise à jour aléatoires uniformément établis dans un intervalle compatible avec les conditions de Mitra. (2) Un mécanisme ``parcimonieux'' , voir le texte pour plus de détails}{figure.0.1.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.7}Discussion}{32}{section.0.1.7}}
+\citation{Chazan:1969,Amitai:1993}
+\@setckpt{Chapitres/Chapter1}{
+\setcounter{page}{34}
+\setcounter{equation}{13}
+\setcounter{enumi}{4}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{12}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{1}
+\setcounter{section}{7}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{3}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{8}
+\setcounter{table}{0}
+\setcounter{division}{4}
+\setcounter{annex}{0}
+\setcounter{parentequation}{0}
+\setcounter{AM@survey}{0}
+\setcounter{Item}{4}
+\setcounter{Hfootnote}{12}
+\setcounter{LT@tables}{0}
+\setcounter{LT@chunks}{0}
+\setcounter{mtc}{1}
+\setcounter{minitocdepth}{2}
+\setcounter{ptc}{0}
+\setcounter{parttocdepth}{2}
+\setcounter{section@level}{1}
+}
